@@ -13,6 +13,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>wedsite</name>
     <description>Spring Boot project</description>
+    <packaging>jar</packaging>
     <url/>
     <licenses>
         <license/>
