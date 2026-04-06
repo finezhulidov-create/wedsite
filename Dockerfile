@@ -1,16 +1,19 @@
-# Stage: build application JAR
-FROM maven:3.9.14 AS builder
+# Stage 1: Build with Maven and explicit JDK 17
+FROM maven:3.9.9-eclipse-temurin-17 AS builder
+
 WORKDIR /application
 COPY . .
-RUN --mount=type=cache,target=/root/.m2 mvn clean install -Dmaven.test.skip
 
-# Stage: extract Spring Boot application layers
+# Сборка проекта с явным указанием версии Java через Maven
+RUN mvn clean package -DskipTests -Dmaven.compiler.source=17 -Dmaven.compiler.target=17
+
+# Stage 2: Extract Spring Boot application layers
 FROM bellsoft/liberica-openjre-alpine:17-cds AS layers
 WORKDIR /application
 COPY --from=builder /application/target/*.jar app.jar
 RUN java -Djarmode=tools -jar app.jar extract --layers --destination extracted
 
-# Stage: final runtime image
+# Stage 3: Final runtime image
 FROM bellsoft/liberica-openjre-alpine:17.0.18-cds
 
 VOLUME /tmp
@@ -45,24 +48,4 @@ ENV JAVA_ON_OUT_OF_MEMORY_OPTS="-XX:+CrashOnOutOfMemoryError"
 ENV JAVA_NATIVE_MEMORY_TRACKING_OPTS="-XX:NativeMemoryTracking=summary -XX:+UnlockDiagnosticVMOptions -XX:+PrintNMTStatistics"
 ENV JAVA_GC_LOG_OPTS="-Xlog:gc*,safepoint:/tmp/gc.log::filecount=10,filesize=100M"
 ENV JAVA_FLIGHT_RECORDING_OPTS="-XX:StartFlightRecording=disk=true,dumponexit=true,filename=/tmp/,maxsize=10g,maxage=24h"
-ENV JAVA_JMX_REMOTE_OPTS="-Djava.rmi.server.hostname=127.0.0.1 \
-    -Dcom.sun.management.jmxremote.authenticate=false \
-    -Dcom.sun.management.jmxremote.ssl=false \
-    -Dcom.sun.management.jmxremote.port=5005 \
-    -Dcom.sun.management.jmxremote.rmi.port=5005"
-
-ENTRYPOINT exec java \
-    -XX:ReservedCodeCacheSize=$JAVA_RESERVED_CODE_CACHE_SIZE \
-    -XX:MaxDirectMemorySize=$JAVA_MAX_DIRECT_MEMORY_SIZE \
-    -XX:MaxMetaspaceSize=$JAVA_MAX_METASPACE_SIZE \
-    -Xss$JAVA_XSS \
-    -Xmx$JAVA_XMX \
-    $JAVA_HEAP_DUMP_OPTS \
-    $JAVA_ON_OUT_OF_MEMORY_OPTS \
-    $JAVA_ERROR_FILE_OPTS \
-    $JAVA_NATIVE_MEMORY_TRACKING_OPTS \
-    $JAVA_GC_LOG_OPTS \
-    $JAVA_FLIGHT_RECORDING_OPTS \
-    $JAVA_JMX_REMOTE_OPTS \
-    $JAVA_CDS_OPTS \
-    -jar app.jar
+ENV JAVA_JMX_REMOTE_OPTS="-Djava.rmi.server.hostname=127.0.0.
