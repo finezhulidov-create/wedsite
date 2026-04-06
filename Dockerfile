@@ -1,51 +1,54 @@
-# Stage 1: Build with Maven and explicit JDK 17
+# Этап 1: Сборка с Maven и явным указанием JDK 17
 FROM maven:3.9.9-eclipse-temurin-17 AS builder
 
 WORKDIR /application
 COPY . .
 
-# Сборка проекта с явным указанием версии Java через Maven
-RUN mvn clean package -DskipTests -Dmaven.compiler.source=17 -Dmaven.compiler.target=17
+# Сборка JAR без тестов, с явной версией Java 17
+RUN mvn clean package -DskipTests
 
-# Stage 2: Extract Spring Boot application layers
+# Этап 2: Извлечение слоёв Spring Boot (для быстрой доставки)
 FROM bellsoft/liberica-openjre-alpine:17-cds AS layers
 WORKDIR /application
 COPY --from=builder /application/target/*.jar app.jar
 RUN java -Djarmode=tools -jar app.jar extract --layers --destination extracted
 
-# Stage 3: Final runtime image
+# Этап 3: Финальный образ для запуска
 FROM bellsoft/liberica-openjre-alpine:17.0.18-cds
 
 VOLUME /tmp
 
-# Configure non-root user
+# Создаём непривилегированного пользователя
 RUN adduser -S spring-user
 USER spring-user
 
 WORKDIR /application
 
-# Copy Spring Boot application layers
+# Копируем слои приложения
 COPY --from=layers /application/extracted/dependencies/ ./
 COPY --from=layers /application/extracted/spring-boot-loader/ ./
 COPY --from=layers /application/extracted/snapshot-dependencies/ ./
 COPY --from=layers /application/extracted/application/ ./
 
-# Generate CDS archive
+# Генерация CDS-архива (Class Data Sharing)
+# Приложение запустится и сразу завершится — это нормально
 RUN java -XX:ArchiveClassesAtExit=app.jsa -Dspring.context.exit=onRefresh -jar app.jar || true
 
-# JVM memory options
-ENV JAVA_RESERVED_CODE_CACHE_SIZE="240M"
-ENV JAVA_MAX_DIRECT_MEMORY_SIZE="10M"
-ENV JAVA_MAX_METASPACE_SIZE="179M"
-ENV JAVA_XSS="1M"
-ENV JAVA_XMX="345M"
+# Устанавливаем общие JVM-опции через JAVA_TOOL_OPTIONS (автоматически применяются)
+ENV JAVA_TOOL_OPTIONS="-XX:SharedArchiveFile=app.jsa \
+  -Xlog:class+load:file=/tmp/classload.log \
+  -XX:ErrorFile=/tmp/java_error.log \
+  -XX:+HeapDumpOnOutOfMemoryError \
+  -XX:HeapDumpPath=/tmp \
+  -XX:+CrashOnOutOfMemoryError \
+  -XX:NativeMemoryTracking=summary \
+  -XX:+UnlockDiagnosticVMOptions \
+  -XX:+PrintNMTStatistics \
+  -Xlog:gc*,safepoint:/tmp/gc.log::filecount=10,filesize=100M \
+  -XX:StartFlightRecording=disk=true,dumponexit=true,filename=/tmp/jfr.jar,maxsize=10g,maxage=24h"
 
-# JVM options
-ENV JAVA_CDS_OPTS="-XX:SharedArchiveFile=app.jsa -Xlog:class+load:file=/tmp/classload.log"
-ENV JAVA_ERROR_FILE_OPTS="-XX:ErrorFile=/tmp/java_error.log"
-ENV JAVA_HEAP_DUMP_OPTS="-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp"
-ENV JAVA_ON_OUT_OF_MEMORY_OPTS="-XX:+CrashOnOutOfMemoryError"
-ENV JAVA_NATIVE_MEMORY_TRACKING_OPTS="-XX:NativeMemoryTracking=summary -XX:+UnlockDiagnosticVMOptions -XX:+PrintNMTStatistics"
-ENV JAVA_GC_LOG_OPTS="-Xlog:gc*,safepoint:/tmp/gc.log::filecount=10,filesize=100M"
-ENV JAVA_FLIGHT_RECORDING_OPTS="-XX:StartFlightRecording=disk=true,dumponexit=true,filename=/tmp/,maxsize=10g,maxage=24h"
-ENV JAVA_JMX_REMOTE_OPTS="-Djava.rmi.server.hostname=127.0.0."
+# Открываем порт (Render ожидает приложение на $PORT или 8080)
+EXPOSE 8080
+
+# Точка входа — запуск JAR
+ENTRYPOINT ["java", "-jar", "app.jar"]
