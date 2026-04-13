@@ -856,7 +856,7 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
     </div>
     <style> #rec829366620 .t795__title{color:#000000;font-family:'LOVE';font-weight:700;letter-spacing:2px;}@media screen and (min-width:900px){#rec829366620 .t795__title{font-size:42px;}}@media screen and (min-width:480px) and (max-width:900px){#rec829366620 .t795__title{font-size:35px;}}@media screen and (max-width:480px),(orientation:landscape) and (max-height:480px){#rec829366620 .t795__title{font-size:35px;}}#rec829366620 .t795__descr{font-size:17px;font-family:'Open Sans';}</style>
    </div>
-  <div id="rec829366621" class="r t-rec t-rec_pt_15 t-rec_pb_45" style="padding-top:15px;padding-bottom:45px;" data-animationappear="off" data-record-type="678">
+ <div id="rec829366621" class="r t-rec t-rec_pt_15 t-rec_pb_45" style="padding-top:15px;padding-bottom:45px;" data-animationappear="off" data-record-type="678">
     <!-- t678 -->
     <div class="t678 t-input_nomargin">
         <div class="t-container">
@@ -870,105 +870,147 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
                         <div class="t-form__inputsbox t-form__inputsbox_vertical-form">
 
                             <!-- ПРИСУТСТВИЕ -->
-                            <div class="t-input-group t-input-group_rd" data-field-name="Присутствие">
-                                <div class="t-input-title t-descr t-descr_md">Сможете ли вы присутствовать?</div>
+                            <div class="t-input-group t-input-group_rd" data-input-lid="1494858943227" role="radiogroup" aria-labelledby="field-title_1494858943227" data-field-radcb="rb" data-field-type="rd" data-field-name="Присутствие">
+                                <div class="t-input-title t-descr t-descr_md" id="field-title_1494858943227" style="color:#000000;font-weight:500;font-family:'Open Sans';">Сможете ли вы присутствовать на торжестве?</div>
                                 <div class="t-input-block">
                                     <div class="t-radio__wrapper">
-                                        <label><input type="radio" name="Присутствие" value="Я приду / Мы придем" required> Я приду / Мы придем</label>
-                                        <label><input type="radio" name="Присутствие" value="Прийти не получится"> Прийти не получится</label>
-                                        <label><input type="radio" name="Присутствие" value="Буду +1"> Буду +1</label>
+                                        <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
+                                            <input type="radio" name="Присутствие" value="Я приду / Мы придем" class="t-radio js-tilda-rule" data-tilda-req="1" aria-required="true">
+                                            <div class="t-radio__indicator" style="border-color:#000000"></div><span>Я приду / Мы придем</span>
+                                        </label>
+                                        <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
+                                            <input type="radio" name="Присутствие" value="Прийти не получится" class="t-radio js-tilda-rule" data-tilda-req="1" aria-required="true">
+                                            <div class="t-radio__indicator" style="border-color:#000000"></div><span>Прийти не получится</span>
+                                        </label>
+                                        <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
+                                            <input type="radio" name="Присутствие" value="Буду +1" class="t-radio js-tilda-rule" data-tilda-req="1" aria-required="true">
+                                            <div class="t-radio__indicator" style="border-color:#000000"></div><span>Буду +1</span>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- ИМЯ -->
-                            <div class="t-input-group t-input-group_in" data-field-name="Имя Фамилия">
-                                <label class="t-input-title t-descr t-descr_md">Имя Фамилия</label>
-                                <div class="t-input-subtitle t-descr t-descr_xxs">если пара/семья — укажите всех</div>
+                            <!-- ИМЯ ФАМИЛИЯ -->
+                            <div class="t-input-group t-input-group_in" data-input-lid="1493283059688" data-field-type="in" data-field-name="Имя Фамилия">
+                                <label for="input_1493283059688" class="t-input-title t-descr t-descr_md" style="color:#000000;font-weight:500;font-family:'Open Sans';">Имя Фамилия</label>
+                                <div class="t-input-subtitle t-descr t-descr_xxs t-opacity_70" style="color:#000000;">если вы будете парой или семьей, то внесите все имена и фамилии</div>
                                 <div class="t-input-block">
-                                    <input type="text" name="Имя Фамилия" class="t-input" required>
+                                    <input type="text" name="Имя Фамилия" id="input_1493283059688" class="t-input js-tilda-rule t-input_bbonly" value="" data-tilda-req="1" aria-required="true" style="color:#000000;border:1px solid #000000;font-family:'Open Sans';">
                                 </div>
                             </div>
 
                             <!-- РЕБЁНОК -->
-                            <div class="t-input-group t-input-group_rd" data-field-name="Ребёнок">
-                                <div class="t-input-title t-descr t-descr_md">Будет ли ребёнок?</div>
+                            <div class="t-input-group t-input-group_rd" data-input-lid="14948589432278" role="radiogroup" aria-labelledby="field-title_14948589432278" data-field-type="rd" data-field-name="Ребенок">
+                                <div class="t-input-title t-descr t-descr_md" id="field-title_14948589432278" style="color:#000000;font-weight:500;font-family:'Open Sans';">Будет ли с вами на празднике ребенок?</div>
                                 <div class="t-input-block">
                                     <div class="t-radio__wrapper">
-                                        <label><input type="radio" name="Ребёнок" value="Да"> Да</label>
-                                        <label><input type="radio" name="Ребёнок" value="Нет" > Нет</label>
+                                        <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
+                                            <input type="radio" name="Ребенок" value="Да" class="t-radio js-tilda-rule" data-tilda-req="1" aria-required="true">
+                                            <div class="t-radio__indicator" style="border-color:#000000"></div><span>Да</span>
+                                        </label>
+                                        <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
+                                            <input type="radio" name="Ребенок" value="Нет" class="t-radio js-tilda-rule" data-tilda-req="1" aria-required="true" checked>
+                                            <div class="t-radio__indicator" style="border-color:#000000"></div><span>Нет</span>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- АЛЛЕРГИЯ -->
-                            <div class="t-input-group t-input-group_rd" data-field-name="Аллергия">
-                                <div class="t-input-title t-descr t-descr_md">Есть аллергии/предпочтения?</div>
+                            <div class="t-input-group t-input-group_rd" data-input-lid="14948589432279" role="radiogroup" aria-labelledby="field-title_14948589432279" data-field-type="rd" data-field-name="Аллергия">
+                                <div class="t-input-title t-descr t-descr_md" id="field-title_14948589432279" style="color:#000000;font-weight:500;font-family:'Open Sans';">Есть ли у Вас аллергии/предпочтения в еде?</div>
                                 <div class="t-input-block">
                                     <div class="t-radio__wrapper">
-                                        <label><input type="radio" name="Аллергия" value="Нет"> Нет</label>
-                                        <label><input type="radio" name="Аллергия" value="Да"> Да</label>
+                                        <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
+                                            <input type="radio" name="Аллергия" value="Нет" class="t-radio js-tilda-rule" data-tilda-req="1" aria-required="true" checked>
+                                            <div class="t-radio__indicator" style="border-color:#000000"></div><span>Нет</span>
+                                        </label>
+                                        <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
+                                            <input type="radio" name="Аллергия" value="Да" class="t-radio js-tilda-rule" data-tilda-req="1" aria-required="true">
+                                            <div class="t-radio__indicator" style="border-color:#000000"></div><span>Да</span>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- УТОЧНЕНИЕ АЛЛЕРГИИ -->
-                            <div class="t-input-group t-input-group_in" data-field-name="Уточнение аллергии" style="display:none;">
-                                <label class="t-input-title t-descr t-descr_md">Что нельзя есть?</label>
+                            <div class="t-input-group t-input-group_in" data-input-lid="1774000000003" data-field-type="in" data-field-name="Уточнение аллергии" style="display:none;">
+                                <label for="input_allergy_comment" class="t-input-title t-descr t-descr_md" style="color:#000000;font-weight:500;font-family:'Open Sans';">Уточните, что нельзя есть или предпочтения в еде</label>
                                 <div class="t-input-block">
-                                    <input type="text" name="Уточнение аллергии" class="t-input">
+                                    <input type="text" name="Уточнение аллергии" id="input_allergy_comment" class="t-input js-tilda-rule t-input_bbonly" value="" style="color:#000000;border:1px solid #000000;font-family:'Open Sans';">
                                 </div>
                             </div>
 
                             <!-- ТРАНСФЕР -->
-                            <div class="t-input-group t-input-group_rd" data-field-name="Трансфер">
-                                <div class="t-input-title t-descr t-descr_md">Нужен трансфер?</div>
+                            <div class="t-input-group t-input-group_rd" data-input-lid="1774000000004" role="radiogroup" aria-labelledby="field-title_1774000000004" data-field-type="rd" data-field-name="Трансфер">
+                                <div class="t-input-title t-descr t-descr_md" id="field-title_1774000000004" style="color:#000000;font-weight:500;font-family:'Open Sans';">Понадобится ли Вам трансфер?</div>
                                 <div class="t-input-block">
                                     <div class="t-radio__wrapper">
-                                        <label><input type="radio" name="Трансфер" value="Да, туда-обратно"> Да, туда-обратно</label>
-                                        <label><input type="radio" name="Трансфер" value="Нет, доеду сам"> Нет, доеду сам</label>
-                                        <label><input type="radio" name="Трансфер" value="Да, в одну сторону"> Да, в одну сторону</label>
+                                        <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
+                                            <input type="radio" name="Трансфер" value="Да, туда-обратно" class="t-radio js-tilda-rule" data-tilda-req="0">
+                                            <div class="t-radio__indicator" style="border-color:#000000"></div><span>Да, туда-обратно</span>
+                                        </label>
+                                        <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
+                                            <input type="radio" name="Трансфер" value="Нет, доеду сам" class="t-radio js-tilda-rule" data-tilda-req="0" checked>
+                                            <div class="t-radio__indicator" style="border-color:#000000"></div><span>Нет, доеду сам</span>
+                                        </label>
+                                        <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
+                                            <input type="radio" name="Трансфер" value="Да, в одну сторону" class="t-radio js-tilda-rule" data-tilda-req="0">
+                                            <div class="t-radio__indicator" style="border-color:#000000"></div><span>Да, в одну сторону</span>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- РАЗМЕЩЕНИЕ -->
-                            <div class="t-input-group t-input-group_rd" data-field-name="Размещение">
-                                <div class="t-input-title t-descr t-descr_md">Нужно жильё?</div>
+                            <div class="t-input-group t-input-group_rd" data-input-lid="1774000000005" role="radiogroup" aria-labelledby="field-title_1774000000005" data-field-type="rd" data-field-name="Размещение">
+                                <div class="t-input-title t-descr t-descr_md" id="field-title_1774000000005" style="color:#000000;font-weight:500;font-family:'Open Sans';">Понадобится ли вам размещение?</div>
                                 <div class="t-input-block">
                                     <div class="t-radio__wrapper">
-                                        <label><input type="radio" name="Размещение" value="Нет, я позабочусь об этом сам"> Сам</label>
-                                        <label><input type="radio" name="Размещение" value="Да, мне нужно жилье"> Да, нужно</label>
-                                        <label><input type="radio" name="Размещение" value="Другое"> Другое</label>
+                                        <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
+                                            <input type="radio" name="Размещение" value="Нет, я позабочусь об этом сам" class="t-radio js-tilda-rule" data-tilda-req="0" checked>
+                                            <div class="t-radio__indicator" style="border-color:#000000"></div><span>Нет, я позабочусь об этом сам</span>
+                                        </label>
+                                        <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
+                                            <input type="radio" name="Размещение" value="Да, мне нужно жилье" class="t-radio js-tilda-rule" data-tilda-req="0">
+                                            <div class="t-radio__indicator" style="border-color:#000000"></div><span>Да, мне нужно жилье</span>
+                                        </label>
+                                        <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
+                                            <input type="radio" name="Размещение" value="Другое" class="t-radio js-tilda-rule" data-tilda-req="0">
+                                            <div class="t-radio__indicator" style="border-color:#000000"></div><span>Другое</span>
+                                        </label>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- УТОЧНЕНИЕ РАЗМЕЩЕНИЯ -->
-                            <div class="t-input-group t-input-group_in" data-field-name="Уточнение размещения" style="display:none;">
-                                <label class="t-input-title t-descr t-descr_md">Что именно нужно?</label>
+                            <div class="t-input-group t-input-group_in" data-input-lid="1774000000006" data-field-type="in" data-field-name="Уточнение размещения" style="display:none;">
+                                <label for="input_accommodation_other" class="t-input-title t-descr t-descr_md" style="color:#000000;font-weight:500;font-family:'Open Sans';">Уточните, что именно нужно</label>
                                 <div class="t-input-block">
-                                    <input type="text" name="Уточнение размещения" class="t-input">
+                                    <input type="text" name="Уточнение размещения" id="input_accommodation_other" class="t-input js-tilda-rule t-input_bbonly" value="" style="color:#000000;border:1px solid #000000;font-family:'Open Sans';">
                                 </div>
                             </div>
 
                             <!-- НАПИТКИ -->
-                            <div class="t-input-group t-input-group_cb" data-field-name="Напитки">
-                                <div class="t-input-title t-descr t-descr_md">Предпочтения по напиткам:</div>
+                            <div class="t-input-group t-input-group_rd" data-input-lid="1673287856994" role="group" aria-labelledby="field-title_1673287856994" data-field-radcb="cb" data-field-type="rd" data-field-name="Напиток">
+                                <div class="t-input-title t-descr t-descr_md" id="field-title_1673287856994" style="color:#000000;font-weight:500;font-family:'Open Sans';">Предпочтения по напиткам:</div>
+                                <div class="t-input-subtitle t-descr t-descr_xxs t-opacity_70" style="color:#000000;">можно выбрать несколько вариантов</div>
                                 <div class="t-input-block">
+                                    <input type="hidden" class="t-checkboxes__hiddeninput js-tilda-rule" name="Напиток" tabindex="-1" value="">
                                     <ul class="t-checkboxes__wrapper">
-                                        <li><label><input type="checkbox" value="Вино красное"> Вино красное</label></li>
-                                        <li><label><input type="checkbox" value="Вино белое"> Вино белое</label></li>
-                                        <li><label><input type="checkbox" value="Крепкий алкоголь"> Крепкий алкоголь</label></li>
-                                        <li><label><input type="checkbox" value="Шампанское"> Шампанское</label></li>
-                                        <li><label><input type="checkbox" value="Безалкогольное"> Безалкогольное</label></li>
+                                        <li class="t-checkboxes__item"><label class="t-checkbox__control t-text t-text_xs" style="color:#000000"><input type="checkbox" value="Вино красное" class="t-checkbox"><div class="t-checkbox__indicator" style="border-color:#000000"></div><span>Вино красное</span></label></li>
+                                        <li class="t-checkboxes__item"><label class="t-checkbox__control t-text t-text_xs" style="color:#000000"><input type="checkbox" value="Вино белое" class="t-checkbox"><div class="t-checkbox__indicator" style="border-color:#000000"></div><span>Вино белое</span></label></li>
+                                        <li class="t-checkboxes__item"><label class="t-checkbox__control t-text t-text_xs" style="color:#000000"><input type="checkbox" value="Крепкий алкоголь (виски/коньяк)" class="t-checkbox"><div class="t-checkbox__indicator" style="border-color:#000000"></div><span>Крепкий алкоголь (виски/коньяк)</span></label></li>
+                                        <li class="t-checkboxes__item"><label class="t-checkbox__control t-text t-text_xs" style="color:#000000"><input type="checkbox" value="Водка/Самогон" class="t-checkbox"><div class="t-checkbox__indicator" style="border-color:#000000"></div><span>Водка/Самогон</span></label></li>
+                                        <li class="t-checkboxes__item"><label class="t-checkbox__control t-text t-text_xs" style="color:#000000"><input type="checkbox" value="Шампанское" class="t-checkbox"><div class="t-checkbox__indicator" style="border-color:#000000"></div><span>Шампанское</span></label></li>
+                                        <li class="t-checkboxes__item"><label class="t-checkbox__control t-text t-text_xs" style="color:#000000"><input type="checkbox" value="Что-нибудь безалкогольное" class="t-checkbox"><div class="t-checkbox__indicator" style="border-color:#000000"></div><span>Что-нибудь безалкогольное</span></label></li>
                                     </ul>
                                 </div>
                             </div>
 
-                            <!-- КНОПКА -->
+                            <!-- КНОПКА ОТПРАВИТЬ -->
                             <div class="t-form__submit">
-                                <button class="t-submit" type="submit">ОТПРАВИТЬ</button>
+                                <button class="t-submit t-btnflex t-btnflex_type_submit t-btnflex_md" type="submit"><span class="t-btnflex__text">ОТПРАВИТЬ</span></button>
                             </div>
 
                         </div>
@@ -981,38 +1023,38 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
     <!-- ЕДИНСТВЕННЫЙ БЕЗОПАСНЫЙ СКРИПТ -->
     <script>
         t_onReady(function () {
-            // Ждём загрузки Tilda-библиотек
-            t_onFuncLoad('t_loadJsFile', function () {
+            // Загружаем Tilda-библиотеку
+            if (typeof t_loadJsFile === 'function') {
                 t_loadJsFile('https://static.tildacdn.com/js/tilda-variant-select-1.0.min.js', function () {
-                    initForm();
+                    try {
+                        t_input_radiobuttons_init('829366621', '1494858943227');   // Присутствие
+                        t_input_radiobuttons_init('829366621', '1493283059688');  // Имя
+                        t_input_radiobuttons_init('829366621', '14948589432278'); // Ребёнок
+                        t_input_radiobuttons_init('829366621', '14948589432279'); // Аллергия
+                        t_input_radiobuttons_init('829366621', '1774000000004');  // Трансфер
+                        t_input_radiobuttons_init('829366621', '1774000000005');  // Размещение
+                        t_input_checkboxes_init('829366621', '1673287856994');  // Напитки
+                    } catch (e) {
+                        console.error('Ошибка инициализации формы:', e);
+                    }
                 }, function () {
                     console.error('Не удалось загрузить tilda-variant-select-1.0.min.js');
-                    initForm(); // fallback
                 });
-            });
-
-            function initForm() {
-                // Инициализируем радио и чекбоксы
-                if (typeof t_input_radiobuttons_init === 'function') {
-                    t_input_radiobuttons_init('829366621');
-                }
-                if (typeof t_input_checkboxes_init === 'function') {
-                    t_input_checkboxes_init('829366621');
-                }
-
-                // Логика показа полей
-                const allergyRadios = document.querySelectorAll('input[name="Аллергия"]');
-                const allergyGroup = document.querySelector('[data-field-name="Уточнение аллергии"]');
-                allergyRadios.forEach(radio => radio.addEventListener('change', () => {
-                    allergyGroup.style.display = radio.value === 'Да' ? 'block' : 'none';
-                }));
-
-                const accommodationRadios = document.querySelectorAll('input[name="Размещение"]');
-                const otherGroup = document.querySelector('[data-field-name="Уточнение размещения"]');
-                accommodationRadios.forEach(radio => radio.addEventListener('change', () => {
-                    otherGroup.style.display = radio.value === 'Другое' ? 'block' : 'none';
-                }));
             }
+
+            // Логика показа полей
+            const allergyRadios = document.querySelectorAll('input[name="Аллергия"]');
+            const allergyGroup = document.querySelector('[data-field-name="Уточнение аллергии"]');
+            const accommodationRadios = document.querySelectorAll('input[name="Размещение"]');
+            const otherGroup = document.querySelector('[data-field-name="Уточнение размещения"]');
+
+            allergyRadios.forEach(radio => radio.addEventListener('change', () => {
+                allergyGroup.style.display = radio.value === 'Да' ? 'block' : 'none';
+            }));
+
+            accommodationRadios.forEach(radio => radio.addEventListener('change', () => {
+                otherGroup.style.display = radio.value === 'Другое' ? 'block' : 'none';
+            }));
 
             // Отправка формы
             document.getElementById('form829366621').addEventListener('submit', function (e) {
@@ -1037,150 +1079,16 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
         });
     </script>
 
-    <!-- Минималистичные стили -->
-      <style>/* Цвета индикаторов */
-#rec829366621 .t-radio__indicator:after,
-#rec829366621 .t-checkbox__indicator:after {
-    background: #000000;
-}
-
-/* Активные состояния */
-#rec829366621 .t-radio__item input:checked ~ .t-radio__indicator,
-#rec829366621 .t-checkbox__control input:checked ~ .t-checkbox__indicator {
-    border-color: #000000;
-}
-
-/* Фокус и hover */
-#rec829366621 .t-radio__item:hover .t-radio__indicator,
-#rec829366621 .t-checkbox__control:hover .t-checkbox__indicator {
-    border-color: #555555;
-}
-
-#rec829366621 .t-radio__item input:focus ~ .t-radio__indicator,
-#rec829366621 .t-checkbox__control input:focus ~ .t-checkbox__indicator {
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
-}
-
-/* Стили кнопки */
-#rec829366621 .t-submit {
-    background: #000000;
-    color: #ffffff;
-    font-family: 'Open Sans';
-    font-size: 16px;
-    font-weight: 500;
-    padding: 14px 28px;
-    border: none;
-    border-radius: 4px;
-    transition: background 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-}
-
-#rec829366621 .t-submit:hover {
-    background: #333333;
-    cursor: pointer;
-}
-
-#rec829366621 .t-submit:active {
-    background: #000000;
-}
-
-/* Уточнение полей — плавное появление */
-#rec829366621 .t-input-group[style*="display: block"] {
-    animation: t-fadein-up 0.4s ease-out forwards;
-}
-
-@keyframes t-fadein-up {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Шрифты */
-#rec829366621 .t-descr,
-#rec829366621 .t-text {
-    font-family: 'Open Sans', sans-serif;
-}
-
-/* Размеры текста */
-#rec829366621 .t-descr_md { font-size: 16px; line-height: 1.5; }
-#rec829366621 .t-descr_xxs { font-size: 12px; line-height: 1.4; }
-#rec829366621 .t-text_xs { font-size: 14px; }
-
-/* Отступы между полями */
-#rec829366621 .t-input-group {
-    margin-bottom: 20px;
-}
-
-#rec829366621 .t-form__submit {
-    margin-top: 25px;
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    #rec829366621 .t-container {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
-    #rec829366621 .t-col_6.t-prefix_3 {
-        width: 100%;
-        margin-left: 0;
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    #rec829366621 .t-submit {
-        width: 100%;
-        font-size: 16px;
-        padding: 16px;
-    }
-
-    #rec829366621 .t-input-title,
-    #rec829366621 .t-input-subtitle {
-        text-align: left;
-    }
-
-    #rec829366621 .t-radio__wrapper label,
-    #rec829366621 .t-checkboxes__wrapper label {
-        font-size: 16px;
-    }
-}
-
-/* === БЕЗОПАСНЫЕ СТИЛИ ДЛЯ АНИМАЦИИ === */
-    #rec829366621 .t-animate {
-        opacity: 1 !important;
-        transform: none !important;
-    }
-
-    #rec829366621 .t-animate.animated,
-    #rec829366621 .t-animate.t-animate_onscroll_animated {
-        opacity: 1;
-        transform: translateY(0);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    /* Плавное появление при раскрытии */
-    @keyframes t-fadein-up {
-        from {
-            opacity: 0;
-            transform: translateY(10px);
+    <!-- Стили (уже подключены глобально через Tilda) -->
+    <!-- Дополнительные локальные стили можно добавить, если нужно -->
+    <style>
+        /* Если хочется что-то подправить */
+        #rec829366621 .t-submit {
+            background: #000000 !important;
+            color: #ffffff !important;
         }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    #rec829366621 .t-input-group[style*="display: block"] {
-        animation: t-fadein-up 0.4s ease-out forwards;
-    }
-      </style>
+    </style>
+</div>
 </div>
    <div id="rec829366622" class="r t-rec" style=" " data-animationappear="off" data-record-type="131">
     <!-- T123 -->
