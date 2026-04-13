@@ -1152,23 +1152,34 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
     }
 }
 
-/* Фикс для анимации появления */
-#rec829366621 .t-animate {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
+/* === БЕЗОПАСНЫЕ СТИЛИ ДЛЯ АНИМАЦИИ === */
+    #rec829366621 .t-animate {
+        opacity: 1 !important;
+        transform: none !important;
+    }
 
-#rec829366621 .t-animate.animated {
-    opacity: 1;
-    transform: translateY(0);
-}
+    #rec829366621 .t-animate.animated,
+    #rec829366621 .t-animate.t-animate_onscroll_animated {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
 
-/* Инициализация анимации при загрузке */
-#rec829366621 .t-animate[data-animate-style="fadein"].t-animate_onscroll_animated {
-    opacity: 1;
-    transform: translateY(0);
-}
+    /* Плавное появление при раскрытии */
+    @keyframes t-fadein-up {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    #rec829366621 .t-input-group[style*="display: block"] {
+        animation: t-fadein-up 0.4s ease-out forwards;
+    }
       </style>
 </div>
    <div id="rec829366622" class="r t-rec" style=" " data-animationappear="off" data-record-type="131">
