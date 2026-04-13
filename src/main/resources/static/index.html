@@ -1021,18 +1021,19 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
     </div>
 
     <!-- ЕДИНСТВЕННЫЙ БЕЗОПАСНЫЙ СКРИПТ -->
-    <script>
+   <script>
     t_onReady(function () {
-        // 1. Убедимся, что Tilda-библиотека загружена
+        // Защита: если Tilda-инструменты не загружены
         if (typeof t_loadJsFile !== 'function') {
             console.warn('t_loadJsFile недоступна. Форма будет проинициализирована позже.');
+            setTimeout(() => location.reload(), 2000); // перезагрузка как fallback
             return;
         }
 
-        // 2. Загружаем tilda-variant-select с резервной проверкой
+        // Загружаем Tilda-библиотеку для радиокнопок
         t_loadJsFile('https://static.tildacdn.com/js/tilda-variant-select-1.0.min.js', function () {
             try {
-                // 3. Инициализируем радиокнопки и чекбоксы
+                // Инициализируем элементы
                 t_input_radiobuttons_init('829366621', '1494858943227');   // Присутствие
                 t_input_radiobuttons_init('829366621', '1493283059688');  // Имя
                 t_input_radiobuttons_init('829366621', '14948589432278'); // Ребёнок
@@ -1040,18 +1041,15 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
                 t_input_radiobuttons_init('829366621', '1774000000004');  // Трансфер
                 t_input_radiobuttons_init('829366621', '1774000000005');  // Размещение
                 t_input_checkboxes_init('829366621', '1673287856994');  // Напитки
-
-                console.log('Форма инициализирована успешно');
+                console.log('Форма инициализирована');
             } catch (e) {
                 console.error('Ошибка инициализации формы:', e);
             }
         }, function () {
             console.error('❌ Не удалось загрузить tilda-variant-select-1.0.min.js');
-            // Резерв: показываем форму вручную, даже если стили не применились
-            document.querySelector('#rec829366621 .t-animate')?.style?.setProperty('opacity', '1', 'important');
         });
 
-        // 4. Логика показа полей (остаётся без изменений)
+        // Логика показа дополнительных полей
         const allergyRadios = document.querySelectorAll('input[name="Аллергия"]');
         const allergyGroup = document.querySelector('[data-field-name="Уточнение аллергии"]');
         const accommodationRadios = document.querySelectorAll('input[name="Размещение"]');
@@ -1065,7 +1063,7 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
             otherGroup.style.display = radio.value === 'Другое' ? 'block' : 'none';
         }));
 
-        // 5. Отправка формы
+        // Отправка формы
         document.getElementById('form829366621').addEventListener('submit', function (e) {
             e.preventDefault();
             const formData = new FormData(this);
@@ -1085,18 +1083,25 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
             })
             .catch(err => alert('Ошибка отправки: ' + err.message));
         });
-
-
     });
-        // Защита: если анимация не сработала — принудительно покажем форму
-setTimeout(() => {
-    const container = document.querySelector('#rec829366621 .t-animate');
-    if (container && window.getComputedStyle(container).opacity < 0.1) {
-        container.style.opacity = '1 !important';
-        container.style.visibility = 'visible';
-        console.warn('Форма принудительно показана — анимация не сработала');
-    }
-}, 2000);
+
+    // Принудительное появление формы
+    document.addEventListener('DOMContentLoaded', function () {
+        const animate = document.querySelector('#rec829366621 .t-animate');
+        if (animate) {
+            animate.style.opacity = '1 !important';
+            animate.style.visibility = 'visible';
+            animate.classList.add('t-animate_started');
+        }
+
+        const rec = document.getElementById('rec829366621');
+        if (rec) {
+            rec.style.opacity = '1';
+            rec.style.visibility = 'visible';
+        }
+
+        console.log('Форма принудительно показана');
+    });
 </script>
     <!-- Стили (уже подключены глобально через Tilda) -->
     <!-- Дополнительные локальные стили можно добавить, если нужно -->
