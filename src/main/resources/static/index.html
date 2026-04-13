@@ -1038,7 +1038,138 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
     </script>
 
     <!-- Минималистичные стили -->
-      <style>#rec829366621 input::-webkit-input-placeholder {color:#000000;opacity:0.5;}#rec829366621 input::-moz-placeholder{color:#000000;opacity:0.5;}#rec829366621 input:-moz-placeholder {color:#000000;opacity:0.5;}#rec829366621 input:-ms-input-placeholder{color:#000000;opacity:0.5;}#rec829366621 textarea::-webkit-input-placeholder {color:#000000;opacity:0.5;}#rec829366621 textarea::-moz-placeholder{color:#000000;opacity:0.5;}#rec829366621 textarea:-moz-placeholder {color:#000000;opacity:0.5;}#rec829366621 textarea:-ms-input-placeholder{color:#000000;opacity:0.5;}</style>
+      <style>/* Цвета индикаторов */
+#rec829366621 .t-radio__indicator:after,
+#rec829366621 .t-checkbox__indicator:after {
+    background: #000000;
+}
+
+/* Активные состояния */
+#rec829366621 .t-radio__item input:checked ~ .t-radio__indicator,
+#rec829366621 .t-checkbox__control input:checked ~ .t-checkbox__indicator {
+    border-color: #000000;
+}
+
+/* Фокус и hover */
+#rec829366621 .t-radio__item:hover .t-radio__indicator,
+#rec829366621 .t-checkbox__control:hover .t-checkbox__indicator {
+    border-color: #555555;
+}
+
+#rec829366621 .t-radio__item input:focus ~ .t-radio__indicator,
+#rec829366621 .t-checkbox__control input:focus ~ .t-checkbox__indicator {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили кнопки */
+#rec829366621 .t-submit {
+    background: #000000;
+    color: #ffffff;
+    font-family: 'Open Sans';
+    font-size: 16px;
+    font-weight: 500;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+#rec829366621 .t-submit:hover {
+    background: #333333;
+    cursor: pointer;
+}
+
+#rec829366621 .t-submit:active {
+    background: #000000;
+}
+
+/* Уточнение полей — плавное появление */
+#rec829366621 .t-input-group[style*="display: block"] {
+    animation: t-fadein-up 0.4s ease-out forwards;
+}
+
+@keyframes t-fadein-up {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Шрифты */
+#rec829366621 .t-descr,
+#rec829366621 .t-text {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Размеры текста */
+#rec829366621 .t-descr_md { font-size: 16px; line-height: 1.5; }
+#rec829366621 .t-descr_xxs { font-size: 12px; line-height: 1.4; }
+#rec829366621 .t-text_xs { font-size: 14px; }
+
+/* Отступы между полями */
+#rec829366621 .t-input-group {
+    margin-bottom: 20px;
+}
+
+#rec829366621 .t-form__submit {
+    margin-top: 25px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    #rec829366621 .t-container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    #rec829366621 .t-col_6.t-prefix_3 {
+        width: 100%;
+        margin-left: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #rec829366621 .t-submit {
+        width: 100%;
+        font-size: 16px;
+        padding: 16px;
+    }
+
+    #rec829366621 .t-input-title,
+    #rec829366621 .t-input-subtitle {
+        text-align: left;
+    }
+
+    #rec829366621 .t-radio__wrapper label,
+    #rec829366621 .t-checkboxes__wrapper label {
+        font-size: 16px;
+    }
+}
+
+/* Фикс для анимации появления */
+#rec829366621 .t-animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+#rec829366621 .t-animate.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Инициализация анимации при загрузке */
+#rec829366621 .t-animate[data-animate-style="fadein"].t-animate_onscroll_animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+      </style>
 </div>
    <div id="rec829366622" class="r t-rec" style=" " data-animationappear="off" data-record-type="131">
     <!-- T123 -->
