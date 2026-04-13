@@ -1022,63 +1022,82 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
 
     <!-- ЕДИНСТВЕННЫЙ БЕЗОПАСНЫЙ СКРИПТ -->
     <script>
-        t_onReady(function () {
-            // Загружаем Tilda-библиотеку
-            if (typeof t_loadJsFile === 'function') {
-                t_loadJsFile('https://static.tildacdn.com/js/tilda-variant-select-1.0.min.js', function () {
-                    try {
-                        t_input_radiobuttons_init('829366621', '1494858943227');   // Присутствие
-                        t_input_radiobuttons_init('829366621', '1493283059688');  // Имя
-                        t_input_radiobuttons_init('829366621', '14948589432278'); // Ребёнок
-                        t_input_radiobuttons_init('829366621', '14948589432279'); // Аллергия
-                        t_input_radiobuttons_init('829366621', '1774000000004');  // Трансфер
-                        t_input_radiobuttons_init('829366621', '1774000000005');  // Размещение
-                        t_input_checkboxes_init('829366621', '1673287856994');  // Напитки
-                    } catch (e) {
-                        console.error('Ошибка инициализации формы:', e);
-                    }
-                }, function () {
-                    console.error('Не удалось загрузить tilda-variant-select-1.0.min.js');
-                });
+    t_onReady(function () {
+        // 1. Убедимся, что Tilda-библиотека загружена
+        if (typeof t_loadJsFile !== 'function') {
+            console.warn('t_loadJsFile недоступна. Форма будет проинициализирована позже.');
+            return;
+        }
+
+        // 2. Загружаем tilda-variant-select с резервной проверкой
+        t_loadJsFile('https://static.tildacdn.com/js/tilda-variant-select-1.0.min.js', function () {
+            try {
+                // 3. Инициализируем радиокнопки и чекбоксы
+                t_input_radiobuttons_init('829366621', '1494858943227');   // Присутствие
+                t_input_radiobuttons_init('829366621', '1493283059688');  // Имя
+                t_input_radiobuttons_init('829366621', '14948589432278'); // Ребёнок
+                t_input_radiobuttons_init('829366621', '14948589432279'); // Аллергия
+                t_input_radiobuttons_init('829366621', '1774000000004');  // Трансфер
+                t_input_radiobuttons_init('829366621', '1774000000005');  // Размещение
+                t_input_checkboxes_init('829366621', '1673287856994');  // Напитки
+
+                console.log('Форма инициализирована успешно');
+            } catch (e) {
+                console.error('Ошибка инициализации формы:', e);
             }
-
-            // Логика показа полей
-            const allergyRadios = document.querySelectorAll('input[name="Аллергия"]');
-            const allergyGroup = document.querySelector('[data-field-name="Уточнение аллергии"]');
-            const accommodationRadios = document.querySelectorAll('input[name="Размещение"]');
-            const otherGroup = document.querySelector('[data-field-name="Уточнение размещения"]');
-
-            allergyRadios.forEach(radio => radio.addEventListener('change', () => {
-                allergyGroup.style.display = radio.value === 'Да' ? 'block' : 'none';
-            }));
-
-            accommodationRadios.forEach(radio => radio.addEventListener('change', () => {
-                otherGroup.style.display = radio.value === 'Другое' ? 'block' : 'none';
-            }));
-
-            // Отправка формы
-            document.getElementById('form829366621').addEventListener('submit', function (e) {
-                e.preventDefault();
-                const formData = new FormData(this);
-                const data = Object.fromEntries(formData.entries());
-                data.answers = [...this.querySelectorAll('input[type="checkbox"]:checked')].map(cb => cb.value);
-
-                fetch('/api/submit', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                })
-                .then(() => {
-                    this.reset();
-                    const success = this.querySelector('.js-successbox');
-                    success.style.display = 'block';
-                    setTimeout(() => success.style.display = 'none', 5000);
-                })
-                .catch(err => alert('Ошибка отправки: ' + err.message));
-            });
+        }, function () {
+            console.error('❌ Не удалось загрузить tilda-variant-select-1.0.min.js');
+            // Резерв: показываем форму вручную, даже если стили не применились
+            document.querySelector('#rec829366621 .t-animate')?.style?.setProperty('opacity', '1', 'important');
         });
-    </script>
 
+        // 4. Логика показа полей (остаётся без изменений)
+        const allergyRadios = document.querySelectorAll('input[name="Аллергия"]');
+        const allergyGroup = document.querySelector('[data-field-name="Уточнение аллергии"]');
+        const accommodationRadios = document.querySelectorAll('input[name="Размещение"]');
+        const otherGroup = document.querySelector('[data-field-name="Уточнение размещения"]');
+
+        allergyRadios.forEach(radio => radio.addEventListener('change', () => {
+            allergyGroup.style.display = radio.value === 'Да' ? 'block' : 'none';
+        }));
+
+        accommodationRadios.forEach(radio => radio.addEventListener('change', () => {
+            otherGroup.style.display = radio.value === 'Другое' ? 'block' : 'none';
+        }));
+
+        // 5. Отправка формы
+        document.getElementById('form829366621').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            data.answers = [...this.querySelectorAll('input[type="checkbox"]:checked')].map(cb => cb.value);
+
+            fetch('/api/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(() => {
+                this.reset();
+                const success = this.querySelector('.js-successbox');
+                success.style.display = 'block';
+                setTimeout(() => success.style.display = 'none', 5000);
+            })
+            .catch(err => alert('Ошибка отправки: ' + err.message));
+        });
+
+
+    });
+        // Защита: если анимация не сработала — принудительно покажем форму
+setTimeout(() => {
+    const container = document.querySelector('#rec829366621 .t-animate');
+    if (container && window.getComputedStyle(container).opacity < 0.1) {
+        container.style.opacity = '1 !important';
+        container.style.visibility = 'visible';
+        console.warn('Форма принудительно показана — анимация не сработала');
+    }
+}, 2000);
+</script>
     <!-- Стили (уже подключены глобально через Tilda) -->
     <!-- Дополнительные локальные стили можно добавить, если нужно -->
     <style>
