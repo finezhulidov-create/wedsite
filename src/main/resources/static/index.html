@@ -212,232 +212,182 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
     <style> #rec829366606 .t795__title{font-size:22px;color:#000000;font-family:'LOVE';font-weight:700;letter-spacing:2px;}#rec829366606 .t795__descr{font-size:16px;font-family:'Open Sans';}</style>
    </div>
 
-   <div id="rec847311397" class="r t-rec t-rec_pt_0 t-rec_pb_45 uc-showmore" style="padding-top:0px;padding-bottom:45px; " data-animationappear="off" data-record-type="396">
-    <!-- T396 -->
-       <!-- === Блок обратного отсчёта (аналог Tilda) === -->
-       <div class="t396">
-           <div class="t396__artboard" data-artboard-recid="847311397" data-artboard-screens="320,480,640,960,1200"
-                data-artboard-height="140" data-artboard-valign="center" data-artboard-upscale="grid"
-                data-artboard-height-res-320="100">
-               <div class="t396__carrier" data-artboard-recid="847311397"></div>
-               <div class="t396__filter" data-artboard-recid="847311397"></div>
+ <!-- === ИСПРАВЛЕННЫЙ ТАЙМЕР В ОДНУ СТРОКУ === -->
+<div id="rec847311397" class="r t-rec t-rec_pt_0 t-rec_pb_45" style="padding-top:0px;padding-bottom:45px;" data-animationappear="off" data-record-type="396">
+    <div class="t396">
+        <div class="t396__artboard" data-artboard-recid="847311397"
+             data-artboard-screens="320,480,640,960,1200"
+             data-artboard-height="140" data-artboard-valign="center" data-artboard-upscale="grid"
+             data-artboard-height-res-320="100">
+            <div class="t396__carrier"></div>
+            <div class="t396__filter"></div>
 
-               <!-- Группа таймера -->
-               <div class="t396__group tn-group tn-group__847311397173513535442278330 t-animate t396__group-flex"
-                    data-group-id="173513535442278330"
-                    data-group-top-value="12" data-group-left-value="364"
-                    data-group-width-value="472" data-group-height-value="116"
-                    data-group-top-res-320-value="-8" data-group-left-res-320-value="-3"
-                    data-group-width-res-320-value="325" data-group-height-res-320-value="96">
-                   <div class="tn-molecule" id="molecule-173513535442278330">
+            <!-- Контейнер таймера -->
+            <div class="t396__group tn-group countdown-container" data-group-id="173513535442278330">
+                <div class="tn-molecule">
 
-                       <!-- ДНИ -->
-                       <div class="t396__group tn-group t396__elem-flex tn-group__847311397173513535442227270"
-                            data-group-id="173513535442227270">
-                           <div class="tn-molecule" id="molecule-173513535442227270">
-                               <div class="t396__elem tn-elem t396__elem-flex tn-elem__8473113971735135354422"
-                                    data-elem-id="1735135354422">
-                                   <div class="tn-atom" id="countdown-days-value">00</div>
-                               </div>
-                               <div class="t396__elem tn-elem t396__elem-flex tn-elem__8473113971735135354428"
-                                    data-elem-id="1735135354428">
-                                   <div class="tn-atom" id="countdown-days-text">Дни</div>
-                               </div>
-                           </div>
-                       </div>
+                    <!-- ДНИ -->
+                    <div class="countdown-unit">
+                        <div class="tn-atom" id="countdown-days-value">00</div>
+                        <div class="tn-atom" id="countdown-days-text">дней</div>
+                    </div>
 
-                       <!-- ЧАСЫ -->
-                       <div class="t396__group tn-group t396__elem-flex tn-group__847311397173513535443620370"
-                            data-group-id="173513535443620370">
-                           <div class="tn-molecule" id="molecule-173513535443620370">
-                               <div class="t396__elem tn-elem t396__elem-flex tn-elem__8473113971735135354436"
-                                    data-elem-id="1735135354436">
-                                   <div class="tn-atom" id="countdown-hours-value">00</div>
-                               </div>
-                               <div class="t396__elem tn-elem t396__elem-flex tn-elem__8473113971735135354439"
-                                    data-elem-id="1735135354439">
-                                   <div class="tn-atom" id="countdown-hours-text">Часы</div>
-                               </div>
-                           </div>
-                       </div>
+                    <!-- ЧАСЫ -->
+                    <div class="countdown-unit">
+                        <div class="tn-atom" id="countdown-hours-value">00</div>
+                        <div class="tn-atom" id="countdown-hours-text">часов</div>
+                    </div>
 
-                       <!-- МИНУТЫ -->
-                       <div class="t396__group tn-group t396__elem-flex tn-group__847311397173513535444677040"
-                            data-group-id="173513535444677040">
-                           <div class="tn-molecule" id="molecule-173513535444677040">
-                               <div class="t396__elem tn-elem t396__elem-flex tn-elem__8473113971735135354446"
-                                    data-elem-id="1735135354446">
-                                   <div class="tn-atom" id="countdown-minutes-value">00</div>
-                               </div>
-                               <div class="t396__elem tn-elem t396__elem-flex tn-elem__8473113971735135354449"
-                                    data-elem-id="1735135354449">
-                                   <div class="tn-atom" id="countdown-minutes-text">Мин</div>
-                               </div>
-                           </div>
-                       </div>
+                    <!-- МИНУТЫ -->
+                    <div class="countdown-unit">
+                        <div class="tn-atom" id="countdown-minutes-value">00</div>
+                        <div class="tn-atom" id="countdown-minutes-text">минут</div>
+                    </div>
 
-                       <!-- СЕКУНДЫ -->
-                       <div class="t396__group tn-group t396__elem-flex tn-group__847311397173513535445699080"
-                            data-group-id="173513535445699080">
-                           <div class="tn-molecule" id="molecule-173513535445699080">
-                               <div class="t396__elem tn-elem t396__elem-flex tn-elem__8473113971735135354456"
-                                    data-elem-id="1735135354456">
-                                   <div class="tn-atom" id="countdown-seconds-value">00</div>
-                               </div>
-                               <div class="t396__elem tn-elem t396__elem-flex tn-elem__8473113971735135354459"
-                                    data-elem-id="1735135354459">
-                                   <div class="tn-atom" id="countdown-seconds-text">Сек</div>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>
+                    <!-- СЕКУНДЫ -->
+                    <div class="countdown-unit">
+                        <div class="tn-atom" id="countdown-seconds-value">00</div>
+                        <div class="tn-atom" id="countdown-seconds-text">секунд</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-       <!-- === Стили из Tilda (скопированы) === -->
-       <style>
-           #rec847311397 .t396__artboard {height:140px;}
-           #rec847311397 .t396__filter {height:140px;}
-           #rec847311397 .t396__carrier{height:140px;background-position:center center;background-attachment:scroll;background-size:cover;background-repeat:no-repeat;}
-           @media screen and (max-width:1199px) {
-               #rec847311397 .t396__artboard,#rec847311397 .t396__filter,#rec847311397 .t396__carrier {}
-               #rec847311397 .t396__filter {}
-               #rec847311397 .t396__carrier {background-attachment:scroll;}
-           }
-           @media screen and (max-width:959px) {
-               #rec847311397 .t396__artboard,#rec847311397 .t396__filter,#rec847311397 .t396__carrier {}
-               #rec847311397 .t396__filter {}
-               #rec847311397 .t396__carrier {background-attachment:scroll;}
-           }
-           @media screen and (max-width:639px) {
-               #rec847311397 .t396__artboard,#rec847311397 .t396__filter,#rec847311397 .t396__carrier {}
-               #rec847311397 .t396__filter {}
-               #rec847311397 .t396__carrier {background-attachment:scroll;}
-           }
-           @media screen and (max-width:479px) {
-               #rec847311397 .t396__artboard,#rec847311397 .t396__filter,#rec847311397 .t396__carrier {height:100px;}
-               #rec847311397 .t396__filter {}
-               #rec847311397 .t396__carrier {background-attachment:scroll;}
-           }
+    <!-- СТИЛИ: таймер в одну строку -->
+    <style>
+        /* Гарантируем горизонтальное расположение */
+        .countdown-container {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 16px !important;
+            height: 116px;
+            padding: 0 10px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 3;
+            flex-wrap: nowrap !important;
+        }
 
-           /* Позиционирование групп */
-           #rec847311397 .tn-group[data-group-id="173513535442278330"]{
-               z-index:3;position:absolute;top:12px;left:calc(50% - 600px + 364px);width:472px;height:116px;
-           }
-           #rec847311397 .tn-group[data-group-id="173513535442278330"] #molecule-173513535442278330 {
-               width:100%;height:100%;position:relative;display:flex;flex-direction:row;column-gap:68px;
-               align-items:center;justify-content:space-between;align-content:space-between;padding:0;
-               border-color:transparent;border-style:solid;box-sizing:border-box;border-radius:0;
-               opacity:1;transition:background-color var(--t396-speedhover,0s) ease-in-out,
-               color var(--t396-speedhover,0s) ease-in-out,border-color var(--t396-speedhover,0s) ease-in-out,
-               box-shadow var(--t396-shadowshoverspeed,0.2s) ease-in-out;
-           }
+        .countdown-unit {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center;
+            min-width: 60px;
+        }
 
-           @media screen and (max-width:1199px) {
-               #rec847311397 .tn-group[data-group-id="173513535442278330"] {top:12px;left:calc(50% - 480px + 244px);width:472px;height:116px;}
-           }
-           @media screen and (max-width:959px) {
-               #rec847311397 .tn-group[data-group-id="173513535442278330"] {top:12px;left:calc(50% - 320px + 105px);width:430px;height:116px;}
-           }
-           @media screen and (max-width:639px) {
-               #rec847311397 .tn-group[data-group-id="173513535442278330"] {top:12px;left:calc(50% - 240px + 35px);width:409px;height:116px;}
-           }
-           @media screen and (max-width:479px) {
-               #rec847311397 .tn-group[data-group-id="173513535442278330"] {top:-8px;left:calc(50% - 160px + -3px);width:325px;height:96px;}
-           }
+        .countdown-unit .tn-atom:first-child {
+            font-size: 51px;
+            font-family: 'LOVE', Arial, sans-serif;
+            color: #000000;
+            font-weight: 900;
+            line-height: 1.2;
+        }
 
-           /* Стили цифр и текста */
-           #rec847311397 .tn-elem[data-elem-id="1735135354422"] .tn-atom,
-           #rec847311397 .tn-elem[data-elem-id="1735135354436"] .tn-atom,
-           #rec847311397 .tn-elem[data-elem-id="1735135354446"] .tn-atom,
-           #rec847311397 .tn-elem[data-elem-id="1735135354456"] .tn-atom {
-               color:#000000;font-size:51px;font-family:'LOVE',Arial,sans-serif;line-height:1.55;
-               font-weight:900;text-align:center;
-           }
-           #rec847311397 .tn-elem[data-elem-id="1735135354428"] .tn-atom,
-           #rec847311397 .tn-elem[data-elem-id="1735135354439"] .tn-atom,
-           #rec847311397 .tn-elem[data-elem-id="1735135354449"] .tn-atom,
-           #rec847311397 .tn-elem[data-elem-id="1735135354459"] .tn-atom {
-               color:#000000;font-size:16px;font-family:'Open Sans',Arial,sans-serif;line-height:1.55;
-               font-weight:400;text-align:center;
-           }
+        .countdown-unit .tn-atom:last-child {
+            font-size: 16px;
+            font-family: 'Open Sans', Arial, sans-serif;
+            color: #000000;
+            margin-top: 4px;
+        }
 
-           @media screen and (max-width:479px) {
-               #rec847311397 .tn-elem[data-elem-id="1735135354422"] .tn-atom,
-               #rec847311397 .tn-elem[data-elem-id="1735135354436"] .tn-atom,
-               #rec847311397 .tn-elem[data-elem-id="1735135354446"] .tn-atom,
-               #rec847311397 .tn-elem[data-elem-id="1735135354456"] .tn-atom {
-                   font-size:40px;
-               }
-               #rec847311397 .tn-elem[data-elem-id="1735135354428"] .tn-atom,
-               #rec847311397 .tn-elem[data-elem-id="1735135354439"] .tn-atom,
-               #rec847311397 .tn-elem[data-elem-id="1735135354449"] .tn-atom,
-               #rec847311397 .tn-elem[data-elem-id="1735135354459"] .tn-atom {
-                   font-size:14px;
-               }
-           }
-       </style>
+        /* Адаптация под мобильные */
+        @media screen and (max-width: 479px) {
+            .countdown-container {
+                height: 96px;
+                gap: 10px !important;
+            }
+            .countdown-unit .tn-atom:first-child {
+                font-size: 36px;
+            }
+            .countdown-unit .tn-atom:last-child {
+                font-size: 14px;
+            }
+        }
 
-       <!-- === Автономный JavaScript-таймер === -->
-       <script>
-           document.addEventListener('DOMContentLoaded', function () {
-               // Элементы
-               const daysValue = document.getElementById('countdown-days-value');
-               const daysText = document.getElementById('countdown-days-text');
-               const hoursValue = document.getElementById('countdown-hours-value');
-               const hoursText = document.getElementById('countdown-hours-text');
-               const minutesValue = document.getElementById('countdown-minutes-value');
-               const minutesText = document.getElementById('countdown-minutes-text');
-               const secondsValue = document.getElementById('countdown-seconds-value');
-               const secondsText = document.getElementById('countdown-seconds-text');
+        @media screen and (max-width: 360px) {
+            .countdown-container {
+                gap: 8px !important;
+            }
+            .countdown-unit .tn-atom:first-child {
+                font-size: 32px;
+            }
+        }
 
-               // Целевая дата: 11 августа 2026, 12:30
-               const targetDate = new Date('2026-08-11T12:30:00');
+        /* Отключаем любые внешние стили Tilda */
+        #rec847311397 .tn-group[data-group-id="173513535442278330"] {
+            top: 12px !important;
+            left: 0 !important;
+            right: 0 !important;
+            transform: none !important;
+            width: auto !important;
+            height: auto !important;
+            display: flex !important;
+        }
 
-               // Функция склонения
-               function declOfNum(n, textForms) {
-                   return textForms[(n % 100 > 4 && n % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(n % 10 < 5) ? Math.abs(n) % 10 : 5]];
-               }
+        /* Если Tilda всё равно пытается изменить — переопределим */
+        #rec847311397 .tn-molecule,
+        #rec847311397 .t396__elem {
+            display: flex !important;
+            flex-direction: row !important;
+        }
+    </style>
 
-               // Обновление таймера
-               function updateCountdown() {
-                   const now = new Date();
-                   const diff = targetDate - now;
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const daysValue = document.getElementById('countdown-days-value');
+            const daysText = document.getElementById('countdown-days-text');
+            const hoursValue = document.getElementById('countdown-hours-value');
+            const hoursText = document.getElementById('countdown-hours-text');
+            const minutesValue = document.getElementById('countdown-minutes-value');
+            const minutesText = document.getElementById('countdown-minutes-text');
+            const secondsValue = document.getElementById('countdown-seconds-value');
+            const secondsText = document.getElementById('countdown-seconds-text');
 
-                   if (diff <= 0) {
-                       setValues(0, 0, 0, 0);
-                       return;
-                   }
+            // Целевая дата: 11 августа 2026, 12:30
+            const targetDate = new Date('2026-08-11T12:30:00');
 
-                   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                   const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                   const minutes = Math.floor((diff / (1000 * 60)) % 60);
-                   const seconds = Math.floor((diff / 1000) % 60);
+            function declOfNum(n, textForms) {
+                return textForms[(n % 100 > 4 && n % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(n % 10 < 5) ? Math.abs(n) % 10 : 5]];
+            }
 
-                   setValues(days, hours, minutes, seconds);
-               }
+            function updateCountdown() {
+                const now = new Date();
+                const diff = targetDate - now;
 
-               function setValues(d, h, m, s) {
-                   daysValue.textContent = String(d).padStart(2, '0');
-                   daysText.textContent = declOfNum(d, ['день', 'дня', 'дней']);
+                if (diff <= 0) {
+                    setValues(0, 0, 0, 0);
+                    return;
+                }
 
-                   hoursValue.textContent = String(h).padStart(2, '0');
-                   hoursText.textContent = declOfNum(h, ['час', 'часа', 'часов']);
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / (1000 * 60)) % 60);
+                const seconds = Math.floor((diff / 1000) % 60);
 
-                   minutesValue.textContent = String(m).padStart(2, '0');
-                   minutesText.textContent = declOfNum(m, ['минута', 'минуты', 'минут']);
+                setValues(days, hours, minutes, seconds);
+            }
 
-                   secondsValue.textContent = String(s).padStart(2, '0');
-                   secondsText.textContent = declOfNum(s, ['секунда', 'секунды', 'секунд']);
-               }
+            function setValues(d, h, m, s) {
+                daysValue.textContent = String(d).padStart(2, '0');
+                daysText.textContent = declOfNum(d, ['день', 'дня', 'дней']);
+                hoursValue.textContent = String(h).padStart(2, '0');
+                hoursText.textContent = declOfNum(h, ['час', 'часа', 'часов']);
+                minutesValue.textContent = String(m).padStart(2, '0');
+                minutesText.textContent = declOfNum(m, ['минута', 'минуты', 'минут']);
+                secondsValue.textContent = String(s).padStart(2, '0');
+                secondsText.textContent = declOfNum(s, ['секунда', 'секунды', 'секунд']);
+            }
 
-               // Запуск
-               updateCountdown();
-               setInterval(updateCountdown, 1000);
-           });
-       </script>
-   </div>
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
+    </script>
+</div>
+</div>
    <div id="rec829366609" class="r t-rec t-rec_pt_15 t-rec_pb_0" style="padding-top:15px;padding-bottom:0px; " data-record-type="670">
     <!-- T670 -->
     <div class="t670">
@@ -909,7 +859,7 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
                                             <div class="t-radio__indicator" style="border-color:#000000"></div><span>Да</span>
                                         </label>
                                         <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
-                                            <input type="radio" name="Ребенок" value="Нет" class="t-radio js-tilda-rule" data-tilda-req="1" aria-required="true" checked>
+                                            <input type="radio" name="Ребенок" value="Нет" class="t-radio js-tilda-rule" data-tilda-req="1" aria-required="true" >
                                             <div class="t-radio__indicator" style="border-color:#000000"></div><span>Нет</span>
                                         </label>
                                     </div>
@@ -922,7 +872,7 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
                                 <div class="t-input-block">
                                     <div class="t-radio__wrapper">
                                         <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
-                                            <input type="radio" name="Аллергия" value="Нет" class="t-radio js-tilda-rule" data-tilda-req="1" aria-required="true" checked>
+                                            <input type="radio" name="Аллергия" value="Нет" class="t-radio js-tilda-rule" data-tilda-req="1" aria-required="true" >
                                             <div class="t-radio__indicator" style="border-color:#000000"></div><span>Нет</span>
                                         </label>
                                         <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
@@ -951,7 +901,7 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
                                             <div class="t-radio__indicator" style="border-color:#000000"></div><span>Да, туда-обратно</span>
                                         </label>
                                         <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
-                                            <input type="radio" name="Трансфер" value="Нет, доеду сам" class="t-radio js-tilda-rule" data-tilda-req="0" checked>
+                                            <input type="radio" name="Трансфер" value="Нет, доеду сам" class="t-radio js-tilda-rule" data-tilda-req="0" >
                                             <div class="t-radio__indicator" style="border-color:#000000"></div><span>Нет, доеду сам</span>
                                         </label>
                                         <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
@@ -968,7 +918,7 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
                                 <div class="t-input-block">
                                     <div class="t-radio__wrapper">
                                         <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
-                                            <input type="radio" name="Размещение" value="Нет, я позабочусь об этом сам" class="t-radio js-tilda-rule" data-tilda-req="0" checked>
+                                            <input type="radio" name="Размещение" value="Нет, я позабочусь об этом сам" class="t-radio js-tilda-rule" data-tilda-req="0" >
                                             <div class="t-radio__indicator" style="border-color:#000000"></div><span>Нет, я позабочусь об этом сам</span>
                                         </label>
                                         <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
