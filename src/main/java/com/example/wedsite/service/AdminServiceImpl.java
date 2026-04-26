@@ -25,20 +25,4 @@ public class AdminServiceImpl implements AdminService{
 
         return userRepository.findAll(pageable).map(mapper::toDTO);
     }
-
-    @Override
-    public void submit(AnswerRequestDto responseDto) {
-
-    }
-
-    @Override
-    public UserDto getUser(AnswerRequestDto requestDto) {
-        User user = userRepository.findById(requestDto.id()).orElseThrow();
-        return mapper.toDTO(user);
-    }
-
-    @Override
-    public void createUser(AnswerRequestDto requestDto) {
-
-    }
 }
