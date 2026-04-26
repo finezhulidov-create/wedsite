@@ -1126,17 +1126,15 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
     <!-- ЕДИНСТВЕННЫЙ БЕЗОПАСНЫЙ СКРИПТ -->
    <script>
     t_onReady(function () {
-        // Защита: если Tilda-инструменты не загружены
         if (typeof t_loadJsFile !== 'function') {
-            console.warn('t_loadJsFile недоступна. Форма будет проинициализирована позже.');
-            setTimeout(() => location.reload(), 2000); // перезагрузка как fallback
+            console.warn('t_loadJsFile недоступна. Перезагрузка...');
+            setTimeout(() => location.reload(), 2000);
             return;
         }
 
         // Загружаем Tilda-библиотеку для радиокнопок
         t_loadJsFile('https://static.tildacdn.com/js/tilda-variant-select-1.0.min.js', function () {
             try {
-                // Инициализируем элементы
                 t_input_radiobuttons_init('829366621', '1494858943227');   // Присутствие
                 t_input_radiobuttons_init('829366621', '1493283059688');  // Имя
                 t_input_radiobuttons_init('829366621', '14948589432278'); // Ребёнок
@@ -1146,7 +1144,7 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
                 t_input_checkboxes_init('829366621', '1673287856994');  // Напитки
                 console.log('Форма инициализирована');
             } catch (e) {
-                console.error('Ошибка инициализации формы:', e);
+                console.error('Ошибка инициализации:', e);
             }
         }, function () {
             console.error('❌ Не удалось загрузить tilda-variant-select-1.0.min.js');
@@ -1168,111 +1166,112 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
             otherGroup.style.display = radio.value === 'Другое' ? 'block' : 'none';
         }));
 
-         presenceRadios.forEach(radio => radio.addEventListener('change', () => {
+        presenceRadios.forEach(radio => radio.addEventListener('change', () => {
             presenceGroup.style.display = radio.value === 'Другое' ? 'block' : 'none';
         }));
 
-        // Отправка формы
-       document.getElementById('form829366621').addEventListener('submit', function (e) {
-    e.preventDefault();
+        // ✅ Отправка формы
+        const form = document.getElementById('form829366621');
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                e.preventDefault(); // ✅ Останавливаем стандартную отправку
 
-    const formData = new FormData(this);
-    const data = {};
+                const formData = new FormData(this);
+                const data = {};
 
-    // Собираем все поля из формы
-    for (let [key, value] of formData.entries()) {
-        if (value) {
-            data[key] = value;
+                // Собираем все поля
+                for (const [key, value] of formData.entries()) {
+                    if (value.trim() !== '') {
+                        data[key] = value.trim();
+                    }
+                }
+
+                const answers = [];
+
+                // Присутствие + уточнение
+                if (data['Присутствие']) {
+                    answers.push(`Присутствие: ${data['Присутствие']}`);
+                    if (data['Уточнение присутствие']) {
+                        answers.push(`Уточнение присутствия: ${data['Уточнение присутствие']}`);
+                    }
+                }
+
+                // Имя Фамилия → username
+                const username = data['Имя Фамилия'] || 'Аноним';
+
+                // Ребёнок
+                if (data['Ребенок']) {
+                    answers.push(`Ребёнок: ${data['Ребенок']}`);
+                }
+
+                // Аллергия + уточнение
+                if (data['Аллергия']) {
+                    answers.push(`Аллергия: ${data['Аллергия']}`);
+                    if (data['Уточнение аллергии']) {
+                        answers.push(`Уточнение аллергии: ${data['Уточнение аллергии']}`);
+                    }
+                }
+
+                // Трансфер
+                if (data['Трансфер']) {
+                    answers.push(`Трансфер: ${data['Трансфер']}`);
+                }
+
+                // Размещение + уточнение
+                if (data['Размещение']) {
+                    answers.push(`Размещение: ${data['Размещение']}`);
+                    if (data['Уточнение размещения']) {
+                        answers.push(`Уточнение размещения: ${data['Уточнение размещения']}`);
+                    }
+                }
+
+                // Напитки
+                const selectedDrinks = [...this.querySelectorAll('input[name="Напиток"][type="checkbox"]:checked')]
+                    .map(cb => cb.value);
+                selectedDrinks.forEach(drink => answers.push(`Напиток: ${drink}`));
+
+                // Финальный payload
+                const payload = {
+                    id: null,
+                    username: username,
+                    answers: answers
+                };
+
+                // Отправка
+                fetch('/api/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Ошибка сервера: ${response.status}`);
+                    }
+                    return response.json().catch(() => ({}));
+                })
+                .then(() => {
+                    this.reset();
+                    const successBox = this.querySelector('.js-successbox');
+                    if (successBox) {
+                        successBox.style.display = 'block';
+                        setTimeout(() => successBox.style.display = 'none', 5000);
+                    }
+                })
+                .catch(err => {
+                    console.error('Ошибка отправки:', err);
+                    alert('Не удалось отправить форму. Проверьте подключение.');
+                });
+            });
+        } else {
+            console.error('❌ Форма #form829366621 не найдена');
         }
-    }
 
-    // Формируем массив answers
-    const answers = [];
-
-    // Присутствие + уточнение
-    if (data['Присутствие']) {
-        answers.push(`Присутствие: ${data['Присутствие']}`);
-        if (data['Уточнение присутствие']) {
-            answers.push(`Уточнение присутствия: ${data['Уточнение присутствие']}`);
-        }
-    }
-
-    // Имя Фамилия → будет username
-    const username = data['Имя Фамилия'] || 'Аноним';
-
-    // Ребёнок
-    if (data['Ребенок']) {
-        answers.push(`Ребёнок: ${data['Ребенок']}`);
-    }
-
-    // Аллергия + уточнение
-    if (data['Аллергия']) {
-        answers.push(`Аллергия: ${data['Аллергия']}`);
-        if (data['Уточнение аллергии']) {
-            answers.push(`Уточнение аллергии: ${data['Уточнение аллергии']}`);
-        }
-    }
-
-    // Трансфер
-    if (data['Трансфер']) {
-        answers.push(`Трансфер: ${data['Трансфер']}`);
-    }
-
-    // Размещение + уточнение
-    if (data['Размещение']) {
-        answers.push(`Размещение: ${data['Размещение']}`);
-        if (data['Уточнение размещения']) {
-            answers.push(`Уточнение размещения: ${data['Уточнение размещения']}`);
-        }
-    }
-
-    // Напитки — чекбоксы (отдельно, т.к. не в FormData)
-    const selectedDrinks = [...this.querySelectorAll('input[name="Напиток"][type="checkbox"]:checked')]
-        .map(cb => cb.value);
-    if (selectedDrinks.length > 0) {
-        selectedDrinks.forEach(drink => answers.push(`Напиток: ${drink}`));
-    }
-
-    // ID — если известен (например, из URL). Пример: /form?guestId=123
-    const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get('guestId'); // или передайте через скрытое поле
-
-    // Финальный объект для отправки
-    const payload = {
-        id: id ? Number(id) : null,  // может быть null, если сервер создаёт сам
-        username: username,
-        answers: answers
-    };
-
-    // Отправка
-    fetch('/api/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-    })
-    .then(response => {
-        if (!response.ok) throw new Error('Ошибка сети');
-        return response.json().catch(() => ({})); // если ответ пустой
-    })
-    .then(() => {
-        this.reset();
-        const successBox = this.querySelector('.js-successbox');
-        if (successBox) {
-            successBox.style.display = 'block';
-            setTimeout(() => successBox.style.display = 'none', 5000);
-        }
-    })
-    .catch(err => {
-        console.error('Ошибка:', err);
-        alert('Не удалось отправить форму: ' + err.message);
-    });
-
-
-    // Принудительное появление формы
-    document.addEventListener('DOMContentLoaded', function () {
+        // ✅ Принудительное появление формы — ВНЕ submit!
         const animate = document.querySelector('#rec829366621 .t-animate');
         if (animate) {
-            animate.style.opacity = '1 !important';
+            animate.style.opacity = '1';
             animate.style.visibility = 'visible';
             animate.classList.add('t-animate_started');
         }
@@ -1282,7 +1281,6 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
             rec.style.opacity = '1';
             rec.style.visibility = 'visible';
         }
-
         console.log('Форма принудительно показана');
     });
 </script>
