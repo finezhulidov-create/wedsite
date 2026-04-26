@@ -1,10 +1,9 @@
 /**
- * Админ-панель с пагинацией
+ * Админ-панель с пагинацией (безопасная версия)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     const usersList = document.getElementById('usersList');
-    const pagination = document.getElementById('pagination') || createPagination();
     const userForm = document.getElementById('userForm');
     const usernameInput = document.getElementById('username');
 
@@ -13,73 +12,96 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Текущая страница
     let currentPage = 0;
-    const size = 10; // Количество на странице (должно совпадать с бэкендом)
+    const size = 10;
 
     // Загрузка пользователей
     const loadUsers = async () => {
         try {
             const response = await fetch(`${API_URL}?page=${currentPage}&size=${size}`);
-            if (!response.ok) throw new Error('Ошибка загрузки');
-            const data = await response.json(); // Page<UserDto>
+            if (!response.ok) throw new Error(`Ошибка ${response.status}`);
+            const data = await response.json();
+
+            if (!data.hasOwnProperty('content')) {
+                throw new Error('Неверный формат ответа: ожидался Page<UserDto>');
+            }
 
             const users = data.content;
-
-            // Очистка списка
             usersList.innerHTML = '';
 
             if (users.length === 0) {
                 usersList.innerHTML = '<li>Нет пользователей</li>';
-                updatePagination(0, 0);
-                return;
+            } else {
+                users.forEach(user => {
+                    const li = document.createElement('li');
+                    li.textContent = user.username || user.name || 'Без имени';
+                    usersList.appendChild(li);
+                });
             }
 
-            // Заполнение списка
-            users.forEach(user => {
-                const li = document.createElement('li');
-                li.textContent = user.username || user.name;
-                usersList.appendChild(li);
-            });
-
-            // Обновить пагинацию
-            updatePagination(currentPage, data.totalPages);
+            updatePagination(currentPage, data.totalPages || 0);
         } catch (err) {
+            console.error('Ошибка загрузки:', err);
             usersList.innerHTML = `<li style="color: red;">Ошибка: ${err.message}</li>`;
-            console.error(err);
         }
     };
 
-    // Обновление интерфейса пагинации
-    const updatePagination = (currentPage, totalPages) => {
+    // Обновление пагинации
+    const updatePagination = (current, total) => {
+        let pagination = document.getElementById('pagination');
+        if (!pagination) {
+            pagination = createPagination();
+        }
+
         const prevBtn = document.getElementById('prev-page');
         const nextBtn = document.getElementById('next-page');
         const pageInfo = document.getElementById('page-info');
 
-        prevBtn.disabled = currentPage === 0;
-        nextBtn.disabled = currentPage >= totalPages - 1 || totalPages === 0;
-
-        pageInfo.textContent = `Страница ${currentPage + 1} из ${totalPages || 1}`;
+        if (prevBtn) prevBtn.disabled = current === 0;
+        if (nextBtn) nextBtn.disabled = current >= total - 1 || total === 0;
+        if (pageInfo) pageInfo.textContent = `Страница ${current + 1} из ${total || 1}`;
     };
 
-    // Кнопка "Назад"
-    document.getElementById('prev-page').addEventListener('click', () => {
-        if (currentPage > 0) {
-            currentPage--;
-            loadUsers();
-        }
-    });
+    // Создание пагинации
+    function createPagination() {
+        const container = document.createElement('div');
+        container.id = 'pagination';
+        container.style.margin = '20px 0';
+        container.style.display = 'flex';
+        container.style.alignItems = 'center';
+        container.style.gap = '10px';
+        container.innerHTML = `
+            <button id="prev-page" style="padding: 8px 12px;">« Назад</button>
+            <span id="page-info">Страница 1 из 1</span>
+            <button id="next-page" style="padding: 8px 12px;">Вперёд »</button>
+        `;
+        document.querySelector('.container')?.appendChild(container);
+        return container;
+    }
 
-    // Кнопка "Вперёд"
-    document.getElementById('next-page').addEventListener('click', () => {
-        currentPage++;
-        loadUsers();
-    });
+    // Добавляем обработчики только ПОСЛЕ создания кнопок
+    const setupPaginationListeners = () => {
+        document.getElementById('prev-page')?.addEventListener('click', () => {
+            if (currentPage > 0) {
+                currentPage--;
+                loadUsers();
+            }
+        });
+
+        document.getElementById('next-page')?.addEventListener('click', () => {
+            currentPage++;
+            loadUsers();
+        });
+    };
 
     // Отправка формы
-    userForm.addEventListener('submit', async (e) => {
+    userForm?.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const name = usernameInput.value.trim();
+        const name = usernameInput?.value.trim();
 
-        if (!name) return;
+        if (!name) {
+            alert('Введите имя');
+            return;
+        }
 
         try {
             const response = await fetch(API_URL, {
@@ -90,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 usernameInput.value = '';
-                currentPage = 0; // После добавления — вернуться на первую страницу
+                currentPage = 0;
                 loadUsers();
             } else {
                 alert('Ошибка при добавлении');
@@ -101,25 +123,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Создаёт пагинацию, если её нет в DOM
-    function createPagination() {
-        const container = document.createElement('div');
-        container.id = 'pagination';
-        container.style.margin = '20px 0';
-        container.style.display = 'flex';
-        container.style.alignItems = 'center';
-        container.style.gap = '10px';
+    // 🚀 Инициализация
+    const init = () => {
+        if (!usersList) {
+            console.error('❌ Элемент #usersList не найден');
+            return;
+        }
 
-        container.innerHTML = `
-            <button id="prev-page" style="padding: 8px 12px;">« Назад</button>
-            <span id="page-info">Страница 1 из 1</span>
-            <button id="next-page" style="padding: 8px 12px;">Вперёд »</button>
-        `;
+        // Создаём пагинацию, если её нет
+        if (!document.getElementById('pagination')) {
+            createPagination();
+        }
 
-        document.querySelector('.container').appendChild(container);
-        return container;
-    }
+        // Устанавливаем слушатели
+        setupPaginationListeners();
 
-    // Загрузить пользователей при старте
-    loadUsers();
+        // Загружаем пользователей
+        loadUsers();
+    };
+
+    // Запуск
+    init();
 });
