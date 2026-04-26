@@ -2,20 +2,26 @@
  * Простой JS для админ-панели
  */
 
+/**
+ * Простой JS для админ-панели
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
     const usersList = document.getElementById('usersList');
     const userForm = document.getElementById('userForm');
     const usernameInput = document.getElementById('username');
 
     // Базовый URL вашего бэкенда
-    const API_URL = '/api/admin/users';  // Предполагается, что у вас есть такой эндпоинт
+    const API_URL = '/api/admin/users';  // GET → возвращает Page<UserDto>
 
     // Загрузка пользователей
     const loadUsers = async () => {
         try {
             const response = await fetch(API_URL);
             if (!response.ok) throw new Error('Ошибка загрузки');
-            const users = await response.json();
+            const data = await response.json(); // ← это Page<UserDto>
+
+            const users = data.content; // ← массив пользователей
 
             usersList.innerHTML = users.length ? '' : '<li>Нет пользователей</li>';
 
