@@ -18,7 +18,7 @@ public class AdminServiceImpl implements AdminService{
     private final UserRepository userRepository;
     private final Mapper mapper;
 
-    private final UndertowServletWebServerFactory undertowServletWebServerFactory;
+
 
     @Override
     public Page<UserDto> getAllUsers(Pageable pageable) {
