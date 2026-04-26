@@ -11,10 +11,21 @@
         <h1>Админ-панель</h1>
 
         <section>
-            <h2>Список пользователей</h2>
-            <ul id="usersList">
-                <li>Загрузка...</li>
-            </ul>
+            <h2>Пользователи</h2>
+
+            <!-- Таблица пользователей -->
+            <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                <thead>
+                <tr style="background-color: #f4f4f4;">
+                    <th style="text-align: left; padding: 10px; border-bottom: 2px solid #ddd;">Имя</th>
+                    <th style="text-align: left; padding: 10px; border-bottom: 2px solid #ddd;">Ответы</th>
+                </tr>
+                </thead>
+                <tbody id="usersTableBody">
+                <!-- Сюда будут подгружаться данные -->
+                </tbody>
+            </table>
+
             <div id="pagination"></div>
         </section>
 
