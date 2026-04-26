@@ -59,7 +59,75 @@ function t_onFuncLoad(funcName,okFunc,time) {if(typeof window[funcName]==='funct
   <script type="text/javascript">window.dataLayer=window.dataLayer||[];</script>
   <script type="text/javascript">(function() {if((/bot|google|yandex|baidu|bing|msn|duckduckbot|teoma|slurp|crawler|spider|robot|crawling|facebook/i.test(navigator.userAgent))===false&&typeof(sessionStorage)!='undefined'&&sessionStorage.getItem('visited')!=='y'&&document.visibilityState){var style=document.createElement('style');style.type='text/css';style.innerHTML='@media screen and (min-width: 980px) {.t-records {opacity: 0;}.t-records_animated {-webkit-transition: opacity ease-in-out .2s;-moz-transition: opacity ease-in-out .2s;-o-transition: opacity ease-in-out .2s;transition: opacity ease-in-out .2s;}.t-records.t-records_visible {opacity: 1;}}';document.getElementsByTagName('head')[0].appendChild(style);function t_setvisRecs(){var alr=document.querySelectorAll('.t-records');Array.prototype.forEach.call(alr,function(el) {el.classList.add("t-records_animated");});setTimeout(function() {Array.prototype.forEach.call(alr,function(el) {el.classList.add("t-records_visible");});sessionStorage.setItem("visited","y");},400);}
 document.addEventListener('DOMContentLoaded',t_setvisRecs);}})();</script>
+     <style>
+         .countdown-separator {
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             margin: 0 5px; /* расстояние от цифр */
+             font-size: 24px;
+             font-weight: bold;
+             color: #000;
+             min-width: 16px;
+             text-align: center;
+         }
 
+         /* Если хотите, чтобы двоеточие было только между цифрами, а не под "дней/часов" — можно скрыть текст */
+         #countdown-days-text,
+         #countdown-hours-text,
+         #countdown-minutes-text,
+         #countdown-seconds-text {
+             display: none; /* скрываем подписи, если они не нужны */
+         }
+
+         /* Опционально: стили для самих блоков */
+         .countdown-unit {
+             text-align: center;
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+         }
+
+         .tn-atom {
+             margin: 0;
+             line-height: 1;
+         }
+     </style>
+     <style>
+         .countdown-unit {
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             justify-content: center;
+             text-align: center;
+         }
+
+         .countdown-separator {
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             margin: 0 8px;
+             font-size: 24px;
+             font-weight: bold;
+             color: #000;
+         }
+
+         /* Гарантируем, что tn-atom виден */
+         .tn-atom {
+             all: unset; /* сбрасываем возможные стили Tilda */
+             display: block;
+             font-family: 'Open Sans', Arial, sans-serif;
+             color: #000;
+             margin: 0;
+             padding: 0;
+         }
+
+         /* Если используется в Tilda — иногда помогает принудительное включение */
+         #rec847311397 .tn-atom {
+             visibility: visible !important;
+             opacity: 1 !important;
+         }
+     </style>
  </head>
  <body class="t-body" style="margin:0;">
   <!--allrecords-->
@@ -216,181 +284,306 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
     <style> #rec829366606 .t795__title{font-size:22px;color:#000000;font-family:'LOVE';font-weight:700;letter-spacing:2px;}#rec829366606 .t795__descr{font-size:16px;font-family:'Open Sans';}</style>
    </div>
 
- <!-- === ИСПРАВЛЕННЫЙ ТАЙМЕР В ОДНУ СТРОКУ === -->
-<div id="rec847311397" class="r t-rec t-rec_pt_0 t-rec_pb_0" style="padding-top:0px;padding-bottom:0px;" data-animationappear="off" data-record-type="396">
-    <div class="t396">
-        <div class="t396__artboard" data-artboard-recid="847311397"
-             data-artboard-screens="320,480,640,960,1200"
-             data-artboard-height="140" data-artboard-valign="center" data-artboard-upscale="grid"
-             data-artboard-height-res-320="100">
-            <div class="t396__carrier"></div>
-            <div class="t396__filter"></div>
+<!--  === ИСПРАВЛЕННЫЙ ТАЙМЕР В ОДНУ СТРОКУ ===-->
+<!--<div id="rec847311397" class="r t-rec t-rec_pt_0 t-rec_pb_0" style="padding-top:0px;padding-bottom:0px;" data-animationappear="off" data-record-type="396">-->
+<!--    <div class="t396">-->
+<!--        <div class="t396__artboard" data-artboard-recid="847311397"-->
+<!--             data-artboard-screens="320,480,640,960,1200"-->
+<!--             data-artboard-height="140" data-artboard-valign="center" data-artboard-upscale="grid"-->
+<!--             data-artboard-height-res-320="100">-->
+<!--            <div class="t396__carrier"></div>-->
+<!--            <div class="t396__filter"></div>-->
 
-            <!-- Контейнер таймера -->
-            <div class="t396__group tn-group countdown-container" data-group-id="173513535442278330">
-                <div class="tn-molecule">
+<!--            &lt;!&ndash; Контейнер таймера &ndash;&gt;-->
+<!--            <div class="t396__group tn-group countdown-container" data-group-id="173513535442278330">-->
+<!--                <div class="tn-molecule">-->
 
-                    <!-- ДНИ -->
-                    <div class="countdown-unit">
-                        <div class="tn-atom" id="countdown-days-value">00</div>
-                        <div class="tn-atom" id="countdown-days-text">дней</div>
-                    </div>
+<!--                    <div class="countdown-unit">-->
+<!--                        <div class="tn-atom" id="countdown-days-value" style="font-size: 51px; line-height: 1;">00</div>-->
+<!--                        <div class="tn-atom" id="countdown-days-text" style="font-size: 16px; line-height: 1; margin-top: 4px;">дней</div>-->
+<!--                    </div>-->
 
-                    <!-- ЧАСЫ -->
-                    <div class="countdown-unit">
-                        <div class="tn-atom" id="countdown-hours-value">00</div>
-                        <div class="tn-atom" id="countdown-hours-text">часов</div>
-                    </div>
+<!--                    <div class="countdown-separator"><span class="tn-atom">:</span></div>-->
 
-                    <!-- МИНУТЫ -->
-                    <div class="countdown-unit">
-                        <div class="tn-atom" id="countdown-minutes-value">00</div>
-                        <div class="tn-atom" id="countdown-minutes-text">минут</div>
-                    </div>
+<!--                    <div class="countdown-unit">-->
+<!--                        <div class="tn-atom" id="countdown-hours-value" style="font-size: 51px; line-height: 1;">00</div>-->
+<!--                        <div class="tn-atom" id="countdown-hours-text" style="font-size: 16px; line-height: 1; margin-top: 4px;">часов</div>-->
+<!--                    </div>-->
 
-                    <!-- СЕКУНДЫ -->
-                    <div class="countdown-unit">
-                        <div class="tn-atom" id="countdown-seconds-value">00</div>
-                        <div class="tn-atom" id="countdown-seconds-text">секунд</div>
-                    </div>
-                </div>
-            </div>
+<!--                    <div class="countdown-separator"><span class="tn-atom">:</span></div>-->
+
+<!--                    <div class="countdown-unit">-->
+<!--                        <div class="tn-atom" id="countdown-minutes-value" style="font-size: 51px; line-height: 1;">00</div>-->
+<!--                        <div class="tn-atom" id="countdown-minutes-text" style="font-size: 16px; line-height: 1; margin-top: 4px;">минут</div>-->
+<!--                    </div>-->
+
+<!--                    <div class="countdown-separator"><span class="tn-atom">:</span></div>-->
+
+<!--                    <div class="countdown-unit">-->
+<!--                        <div class="tn-atom" id="countdown-seconds-value" style="font-size: 51px; line-height: 1;">00</div>-->
+<!--                        <div class="tn-atom" id="countdown-seconds-text" style="font-size: 16px; line-height: 1; margin-top: 4px;">секунд</div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; СТИЛИ: таймер в одну строку &ndash;&gt;-->
+<!--    <style>-->
+<!--      -->
+
+<!--        .countdown-unit .tn-atom:first-child {-->
+<!--            font-size: 51px;-->
+<!--            font-family: 'LOVE', Arial, sans-serif;-->
+<!--            color: #000000;-->
+<!--            font-weight: 900;-->
+<!--            line-height: 1.2;-->
+<!--        }-->
+
+<!--        .countdown-unit .tn-atom:last-child {-->
+<!--            font-size: 16px;-->
+<!--            font-family: 'Open Sans', Arial, sans-serif;-->
+<!--            color: #000000;-->
+<!--            margin-top: 4px;-->
+<!--        }-->
+
+<!--        /* Адаптация под мобильные */-->
+<!--        @media screen and (max-width: 479px) {-->
+<!--            .countdown-container {-->
+<!--                height: 96px;-->
+<!--                gap: 10px !important;-->
+<!--            }-->
+<!--            .countdown-unit .tn-atom:first-child {-->
+<!--                font-size: 36px;-->
+<!--            }-->
+<!--            .countdown-unit .tn-atom:last-child {-->
+<!--                font-size: 14px;-->
+<!--            }-->
+<!--        }-->
+
+<!--        @media screen and (max-width: 360px) {-->
+<!--            .countdown-container {-->
+<!--                gap: 8px !important;-->
+<!--            }-->
+<!--            .countdown-unit .tn-atom:first-child {-->
+<!--                font-size: 32px;-->
+<!--            }-->
+<!--        }-->
+
+
+
+<!--    </style>-->
+
+<!--    &lt;!&ndash; JavaScript &ndash;&gt;-->
+<!--    <script>-->
+<!--        document.addEventListener('DOMContentLoaded', function () {-->
+<!--            const daysValue = document.getElementById('countdown-days-value');-->
+<!--            const daysText = document.getElementById('countdown-days-text');-->
+<!--            const hoursValue = document.getElementById('countdown-hours-value');-->
+<!--            const hoursText = document.getElementById('countdown-hours-text');-->
+<!--            const minutesValue = document.getElementById('countdown-minutes-value');-->
+<!--            const minutesText = document.getElementById('countdown-minutes-text');-->
+<!--            const secondsValue = document.getElementById('countdown-seconds-value');-->
+<!--            const secondsText = document.getElementById('countdown-seconds-text');-->
+
+<!--            // Целевая дата: 11 августа 2026, 12:30-->
+<!--            const targetDate = new Date('2026-08-11T12:30:00');-->
+
+<!--            function declOfNum(n, textForms) {-->
+<!--                return textForms[(n % 100 > 4 && n % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(n % 10 < 5) ? Math.abs(n) % 10 : 5]];-->
+<!--            }-->
+
+<!--            function updateCountdown() {-->
+<!--                const now = new Date();-->
+<!--                const diff = targetDate - now;-->
+
+<!--                if (diff <= 0) {-->
+<!--                    setValues(0, 0, 0, 0);-->
+<!--                    return;-->
+<!--                }-->
+
+<!--                const days = Math.floor(diff / (1000 * 60 * 60 * 24));-->
+<!--                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);-->
+<!--                const minutes = Math.floor((diff / (1000 * 60)) % 60);-->
+<!--                const seconds = Math.floor((diff / 1000) % 60);-->
+
+<!--                setValues(days, hours, minutes, seconds);-->
+<!--            }-->
+
+<!--            function setValues(d, h, m, s) {-->
+<!--                daysValue.textContent = String(d).padStart(2, '0');-->
+<!--                daysText.textContent = declOfNum(d, ['день', 'дня', 'дней']);-->
+<!--                hoursValue.textContent = String(h).padStart(2, '0');-->
+<!--                hoursText.textContent = declOfNum(h, ['час', 'часа', 'часов']);-->
+<!--                minutesValue.textContent = String(m).padStart(2, '0');-->
+<!--                minutesText.textContent = declOfNum(m, ['минута', 'минуты', 'минут']);-->
+<!--                secondsValue.textContent = String(s).padStart(2, '0');-->
+<!--                secondsText.textContent = declOfNum(s, ['секунда', 'секунды', 'секунд']);-->
+<!--            }-->
+
+<!--            updateCountdown();-->
+<!--            setInterval(updateCountdown, 1000);-->
+<!--        });-->
+<!--    </script>-->
+<!--</div>-->
+   <!-- УПРОЩЁННЫЙ ТАЙМЕР С ГАРАНТИРОВАННЫМ ОТОБРАЖЕНИЕМ ТЕКСТА -->
+<div id="countdown" style="padding: 30px 0; text-align: center; font-family: 'Open Sans', Arial, sans-serif;">
+    <div class="countdown-container"
+         style="display: flex; justify-content: center; align-items: flex-start; gap: 12px; flex-wrap: nowrap; font-family: 'LOVE', Arial, sans-serif;">
+
+        <!-- ДНИ -->
+        <div class="countdown-unit" style="display: flex; flex-direction: column; align-items: center;">
+            <div id="countdown-days-value"
+                 style="font-size: 51px; font-weight: 900; color: #000; line-height: 1;">00</div>
+            <div id="countdown-days-text"
+                 style="font-size: 24px; margin-top: 4px; color: #000; line-height: 1;">дней</div>
+        </div>
+
+        <div class="countdown-separator"
+             style="font-size: 24px; font-weight: bold; color: #000; margin: 0 6px; align-self: center;">:</div>
+
+        <!-- ЧАСЫ -->
+        <div class="countdown-unit" style="display: flex; flex-direction: column; align-items: center;">
+            <div id="countdown-hours-value"
+                 style="font-size: 51px; font-weight: 900; color: #000; line-height: 1;">00</div>
+            <div id="countdown-hours-text"
+                 style="font-size: 24px; margin-top: 4px; color: #000; line-height: 1;">часов</div>
+        </div>
+
+        <div class="countdown-separator"
+             style="font-size: 24px; font-weight: bold; color: #000; margin: 0 6px; align-self: center;">:</div>
+
+        <!-- МИНУТЫ -->
+        <div class="countdown-unit" style="display: flex; flex-direction: column; align-items: center;">
+            <div id="countdown-minutes-value"
+                 style="font-size: 51px; font-weight: 900; color: #000; line-height: 1;">00</div>
+            <div id="countdown-minutes-text"
+                 style="font-size: 24px; margin-top: 4px; color: #000; line-height: 1;">минут</div>
+        </div>
+
+        <div class="countdown-separator"
+             style="font-size: 24px; font-weight: bold; color: #000; margin: 0 6px; align-self: center;">:</div>
+
+        <!-- СЕКУНДЫ -->
+        <div class="countdown-unit" style="display: flex; flex-direction: column; align-items: center;">
+            <div id="countdown-seconds-value"
+                 style="font-size: 51px; font-weight: 900; color: #000; line-height: 1;">00</div>
+            <div id="countdown-seconds-text"
+                 style="font-size: 24px; margin-top: 4px; color: #000; line-height: 1;">секунд</div>
         </div>
     </div>
-
-    <!-- СТИЛИ: таймер в одну строку -->
-    <style>
-        /* Гарантируем горизонтальное расположение */
-        .countdown-container {
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            gap: 16px !important;
-            height: 116px;
-            padding: 0 10px;
-            box-sizing: border-box;
-            position: relative;
-            z-index: 3;
-            flex-wrap: nowrap !important;
-        }
-
-        .countdown-unit {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            text-align: center;
-            min-width: 60px;
-        }
-
-        .countdown-unit .tn-atom:first-child {
-            font-size: 51px;
-            font-family: 'LOVE', Arial, sans-serif;
-            color: #000000;
-            font-weight: 900;
-            line-height: 1.2;
-        }
-
-        .countdown-unit .tn-atom:last-child {
-            font-size: 16px;
-            font-family: 'Open Sans', Arial, sans-serif;
-            color: #000000;
-            margin-top: 4px;
-        }
-
-        /* Адаптация под мобильные */
-        @media screen and (max-width: 479px) {
-            .countdown-container {
-                height: 96px;
-                gap: 10px !important;
-            }
-            .countdown-unit .tn-atom:first-child {
-                font-size: 36px;
-            }
-            .countdown-unit .tn-atom:last-child {
-                font-size: 14px;
-            }
-        }
-
-        @media screen and (max-width: 360px) {
-            .countdown-container {
-                gap: 8px !important;
-            }
-            .countdown-unit .tn-atom:first-child {
-                font-size: 32px;
-            }
-        }
-
-        /* Отключаем любые внешние стили Tilda */
-        #rec847311397 .tn-group[data-group-id="173513535442278330"] {
-            top: 12px !important;
-            left: 0 !important;
-            right: 0 !important;
-            transform: none !important;
-            width: auto !important;
-            height: auto !important;
-            display: flex !important;
-        }
-
-        /* Если Tilda всё равно пытается изменить — переопределим */
-        #rec847311397 .tn-molecule,
-        #rec847311397 .t396__elem {
-            display: flex !important;
-            flex-direction: row !important;
-        }
-    </style>
-
-    <!-- JavaScript -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const daysValue = document.getElementById('countdown-days-value');
-            const daysText = document.getElementById('countdown-days-text');
-            const hoursValue = document.getElementById('countdown-hours-value');
-            const hoursText = document.getElementById('countdown-hours-text');
-            const minutesValue = document.getElementById('countdown-minutes-value');
-            const minutesText = document.getElementById('countdown-minutes-text');
-            const secondsValue = document.getElementById('countdown-seconds-value');
-            const secondsText = document.getElementById('countdown-seconds-text');
-
-            // Целевая дата: 11 августа 2026, 12:30
-            const targetDate = new Date('2026-08-11T12:30:00');
-
-            function declOfNum(n, textForms) {
-                return textForms[(n % 100 > 4 && n % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(n % 10 < 5) ? Math.abs(n) % 10 : 5]];
-            }
-
-            function updateCountdown() {
-                const now = new Date();
-                const diff = targetDate - now;
-
-                if (diff <= 0) {
-                    setValues(0, 0, 0, 0);
-                    return;
-                }
-
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                const minutes = Math.floor((diff / (1000 * 60)) % 60);
-                const seconds = Math.floor((diff / 1000) % 60);
-
-                setValues(days, hours, minutes, seconds);
-            }
-
-            function setValues(d, h, m, s) {
-                daysValue.textContent = String(d).padStart(2, '0');
-                daysText.textContent = declOfNum(d, ['день', 'дня', 'дней']);
-                hoursValue.textContent = String(h).padStart(2, '0');
-                hoursText.textContent = declOfNum(h, ['час', 'часа', 'часов']);
-                minutesValue.textContent = String(m).padStart(2, '0');
-                minutesText.textContent = declOfNum(m, ['минута', 'минуты', 'минут']);
-                secondsValue.textContent = String(s).padStart(2, '0');
-                secondsText.textContent = declOfNum(s, ['секунда', 'секунды', 'секунд']);
-            }
-
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
-        });
-    </script>
 </div>
+
+<!-- АНИМАЦИЯ ПОЯВЛЕНИЯ -->
+<style>
+    #countdown {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Гарантия видимости */
+    .countdown-unit > div {
+        min-height: auto !important;
+        height: auto !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .countdown-separator {
+        font-size: 24px;
+        font-weight: bold;
+        color: #000;
+        margin: 0 4px; /* Уменьшено с 8px до 4px */
+        align-self: center;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 479px) {
+        .countdown-container {
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .countdown-unit > div:first-child {
+            font-size: 36px !important;
+        }
+        .countdown-unit > div:last-child {
+            font-size: 14px !important;
+        }
+        .countdown-separator {
+            font-size: 20px !important;
+        }
+    }
+
+    @media (max-width: 360px) {
+        .countdown-unit > div:first-child {
+            font-size: 32px !important;
+        }
+        .countdown-separator {
+            margin: 0 2px;
+        }
+    }
+</style>
+
+<!-- ЛОГИКА ТАЙМЕРА (НЕ ТРОНУТА) -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const daysValue = document.getElementById('countdown-days-value');
+        const daysText = document.getElementById('countdown-days-text');
+        const hoursValue = document.getElementById('countdown-hours-value');
+        const hoursText = document.getElementById('countdown-hours-text');
+        const minutesValue = document.getElementById('countdown-minutes-value');
+        const minutesText = document.getElementById('countdown-minutes-text');
+        const secondsValue = document.getElementById('countdown-seconds-value');
+        const secondsText = document.getElementById('countdown-seconds-text');
+
+        // Целевая дата: 11 августа 2026, 12:30
+        const targetDate = new Date('2026-08-11T12:30:00');
+
+        function declOfNum(n, textForms) {
+            return textForms[(n % 100 > 4 && n % 100 < 20) ? 2 : [2, 0, 1, 1, 1, 2][(n % 10 < 5) ? Math.abs(n) % 10 : 5]];
+        }
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                setValues(0, 0, 0, 0);
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            setValues(days, hours, minutes, seconds);
+        }
+
+        function setValues(d, h, m, s) {
+            daysValue.textContent = String(d).padStart(2, '0');
+            daysText.textContent = declOfNum(d, ['день', 'дня', 'дней']);
+            hoursValue.textContent = String(h).padStart(2, '0');
+            hoursText.textContent = declOfNum(h, ['час', 'часа', 'часов']);
+            minutesValue.textContent = String(m).padStart(2, '0');
+            minutesText.textContent = declOfNum(m, ['минута', 'минуты', 'минут']);
+            secondsValue.textContent = String(s).padStart(2, '0');
+            secondsText.textContent = declOfNum(s, ['секунда', 'секунды', 'секунд']);
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    });
+</script>
 
    <div id="rec829366609" class="r t-rec t-rec_pt_0 t-rec_pb_0" style="padding-top:0px;padding-bottom:0px; " data-record-type="670">
     <!-- T670 -->
@@ -580,7 +773,7 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
         ЛОКАЦИЯ
        </div>
        <div class="t795__descr t-descr t-descr_xl t-margin_auto t-animate" data-animate-style="fadeinup" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.3" field="descr">
-        Наша свадьба пройдет в&nbsp;загородном клубе «Небо» (шатёр).
+        Наша свадьба пройдет в&nbsp;загородном клубе «Небо».
         <br>
         <br>
         Он&nbsp;находится по&nbsp;адресу:
@@ -595,38 +788,49 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
    <div id="rec829366613" class="r t-rec t-rec_pt_0 t-rec_pb_0" style="padding-top:0px;padding-bottom:0px; " data-record-type="670">
     <!-- T670 -->
     <div class="t670">
-     <div class="t-slds" style="visibility: hidden;">
-      <div class="t-container t-slds__main t-animate" data-animate-style="fadein">
-       <ul class="t-slds__arrow_container t-slds__arrow_container-outside">
-       </ul>
-       <div class="t-slds__container t-width t-width_7 t-margin_auto">
-        <div class="t-slds__items-wrapper t-slds__witharrows t-slds_animated-none" id="carousel_829366613" data-slider-transition="300" data-slider-with-cycle="true" data-slider-correct-height="true" data-auto-correct-mobile-width="false" data-slider-arrows-nearpic="yes" aria-roledescription="carousel" aria-live="off">
-         <div class="t-slds__item t-slds__item_active" data-slide-index="1" role="group" aria-roledescription="slide" aria-hidden="false" aria-label="1 из 1">
-          <div class="t-width t-width_7 t-margin_auto" itemscope itemtype="http://schema.org/ImageObject">
-           <div class="t-slds__wrapper t-align_center">
-            <meta itemprop="image" content="/image/phPlo1.jpg">
-            <meta itemprop="caption" content="Soho Country Club">
-            <div class="t670__imgwrapper" bgimgfield="gi_img__0">
-             <div class="t-slds__bgimg t-slds__bgimg-contain t-bgimg" data-original="/image/phPlo1.jpg" style="background-image: url('/image/phPlo1.jpg');" role="img" aria-label="Soho Country Club">
-             </div>
-             <div class="t670__separator" data-slider-image-width="660" data-slider-image-height="400px"></div>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-       </div>
-       <ul class="t-slds__bullet_wrapper">
-       </ul>
-       <div class="t-slds__caption__container">
-       </div>
-      </div>
-     </div>
-    </div>
-    <script>t_onReady(function() {t_onFuncLoad('t670_init',function() {t670_init('829366613',false);});});</script>
-    <style>#rec829366613 .t-slds__bullet_active .t-slds__bullet_body{background-color:#222 !important;}#rec829366613 .t-slds__bullet:hover .t-slds__bullet_body{background-color:#222 !important;}</style>
-   </div>
+     <div class="custom-carousel" style="max-width: 800px; margin: 40px auto;">
+  <div class="carousel-container">
+    <div class="carousel-image" style="background-image: url('image/phPlo1.jpg');"></div>
+  </div>
+</div>
 
+<style>
+  .custom-carousel {
+    position: relative;
+    margin: 40px auto;
+  }
+
+  .carousel-container {
+    overflow: hidden;
+    border-radius: 8px;
+    width: 100%;
+    height: 500px; /* Задай нужную высоту */
+
+  }
+
+  .carousel-image {
+    width: 100%;
+    height: 100%;
+    background-image: var(--img-url);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+  }
+</style>
+
+<script>
+  // Просто для надёжности — если хочется подгрузить картинку динамически или проверить
+  document.addEventListener("DOMContentLoaded", function () {
+    const img = document.querySelector(".carousel-image");
+    const bgImage = img.style.backgroundImage;
+
+    if (!bgImage || bgImage === 'none') {
+      console.warn("Изображение не загружено. Проверь путь к файлу.");
+    }
+  });
+</script>
+</div>
    <div id="rec829366616" class="r t-rec t-rec_pt_15 t-rec_pb_15" style="padding-top:10px;padding-bottom:10px; " data-record-type="219">
     <!-- T191 -->
     <div class="t191">
@@ -750,10 +954,16 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
                                             <div class="t-radio__indicator" style="border-color:#000000"></div><span>Прийти не получится</span>
                                         </label>
                                         <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
-                                            <input type="radio" name="Присутствие" value="Буду +1" class="t-radio js-tilda-rule" data-tilda-req="1" aria-required="true">
-                                            <div class="t-radio__indicator" style="border-color:#000000"></div><span>Буду +1</span>
+                                            <input type="radio" name="Присутствие" value="Другое" class="t-radio js-tilda-rule" data-tilda-req="1" aria-required="true">
+                                            <div class="t-radio__indicator" style="border-color:#000000"></div><span>Другое</span>
                                         </label>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="t-input-group t-input-group_in" data-input-lid="1774000000001" data-field-type="in" data-field-name="Уточнение присутствие" style="display:none;">
+                                <label for="input_presence_comment" class="t-input-title t-descr t-descr_md" style="color:#000000;font-weight:500;font-family:'Open Sans';">Уточните информацию по присутствию</label>
+                                <div class="t-input-block">
+                                    <input type="text" name="Уточнение присутствие" id="input_presence_comment" class="t-input js-tilda-rule t-input_bbonly" value="" style="color:#000000;border:1px solid #000000;font-family:'Open Sans';">
                                 </div>
                             </div>
 
@@ -782,6 +992,8 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
                                     </div>
                                 </div>
                             </div>
+
+
 
                             <!-- АЛЛЕРГИЯ -->
                             <div class="t-input-group t-input-group_rd" data-input-lid="14948589432279" role="radiogroup" aria-labelledby="field-title_14948589432279" data-field-type="rd" data-field-name="Аллергия">
@@ -945,6 +1157,8 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
         const allergyGroup = document.querySelector('[data-field-name="Уточнение аллергии"]');
         const accommodationRadios = document.querySelectorAll('input[name="Размещение"]');
         const otherGroup = document.querySelector('[data-field-name="Уточнение размещения"]');
+        const presenceRadios = document.querySelectorAll('input[name="Присутствие"]');
+        const presenceGroup = document.querySelector('[data-field-name="Уточнение присутствие"]');
 
         allergyRadios.forEach(radio => radio.addEventListener('change', () => {
             allergyGroup.style.display = radio.value === 'Да' ? 'block' : 'none';
@@ -952,6 +1166,10 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
 
         accommodationRadios.forEach(radio => radio.addEventListener('change', () => {
             otherGroup.style.display = radio.value === 'Другое' ? 'block' : 'none';
+        }));
+
+         presenceRadios.forEach(radio => radio.addEventListener('change', () => {
+            presenceGroup.style.display = radio.value === 'Другое' ? 'block' : 'none';
         }));
 
         // Отправка формы
@@ -1093,7 +1311,8 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
                     ЦВЕТЫ
                 </div>
                 <div class="t795__descr t-descr t-descr_md t-margin_auto t-animate" data-animate-style="fadeinup" data-animate-group="yes" data-animate-order="2" data-animate-delay="0.2" field="descr">
-                    Просим вас воздержаться от букетов. Мы очень ценим ваше внимание, но от большого количества цветов нам будет сложно получить максимум удовольствия. Вместо этого, мы хотим, чтобы вы принесли с собой одну голубую гортензию. Так вы станете частью нашего свадебного декора!
+                    Просим вас воздержаться от букетов. Мы очень ценим ваше внимание, но от большого количества цветов нам будет сложно получить максимум удовольствия. Вместо этого, мы хотим, чтобы вы принесли с собой <span style="text-decoration: underline; text-underline-offset: 2px;">
+  одну голубую гортензию</span>. Так вы станете частью нашего свадебного декора!
                 </div>
                 <!-- Карусель с плавной анимацией -->
                 <div class="flowers-carousel-container" style="margin: 20px auto; text-align: center;">
@@ -1410,37 +1629,49 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
 </div>
    <div id="rec829366623" class="r t-rec t-rec_pt_0 t-rec_pb_0" style="padding-top:0px;padding-bottom:0px; " data-record-type="670">
     <!-- T670 -->
-    <div class="t670">
-     <div class="t-slds" style="visibility: hidden;">
-      <div class="t-container t-slds__main t-animate" data-animate-style="fadein">
-       <ul class="t-slds__arrow_container t-slds__arrow_container-outside">
-       </ul>
-       <div class="t-slds__container t-width t-width_6 t-margin_auto">
-        <div class="t-slds__items-wrapper t-slds__witharrows t-slds_animated-none" id="carousel_829366623" data-slider-transition="300" data-slider-with-cycle="true" data-slider-correct-height="true" data-auto-correct-mobile-width="false" data-slider-arrows-nearpic="yes" aria-roledescription="carousel" aria-live="off">
-         <div class="t-slds__item t-slds__item_active" data-slide-index="1" role="group" aria-roledescription="slide" aria-hidden="false" aria-label="1 из 1">
-          <div class="t-width t-width_6 t-margin_auto" itemscope itemtype="http://schema.org/ImageObject">
-           <div class="t-slds__wrapper t-align_center">
-            <meta itemprop="image" content="/image/footer.jpg">
-            <meta itemprop="caption" content="Soho Country Club">
-            <div class="t670__imgwrapper" bgimgfield="gi_img__0">
-             <div class="t-slds__bgimg t-slds__bgimg-contain t-bgimg" data-original="/image/footer.jpg" style="background-image: url('/image/footer.jpg');" role="img" aria-label="Soho Country Club">
-             </div>
-             <div class="t670__separator" data-slider-image-width="560" data-slider-image-height="350px"></div>
-            </div>
+       <div class="t670">
+           <div class="custom-carousel" style="max-width: 800px; margin: 40px auto;">
+               <div class="carousel-container">
+                   <div class="carousel-image" style="background-image: url('image/footer.jpg');"></div>
+               </div>
            </div>
-          </div>
-         </div>
-        </div>
-       </div>
-       <ul class="t-slds__bullet_wrapper">
-       </ul>
-       <div class="t-slds__caption__container">
-       </div>
-      </div>
-     </div>
-    </div>
-    <script>t_onReady(function() {t_onFuncLoad('t670_init',function() {t670_init('829366623',false);});});</script>
-       <!--      БЫло закомменчено-->
+
+           <style>
+               .custom-carousel {
+                 position: relative;
+                 margin: 40px auto;
+               }
+
+               .carousel-container {
+                 overflow: hidden;
+                 border-radius: 10px;
+                 width: 100%;
+                 height: 500px; /* Задай нужную высоту */
+
+               }
+
+               .carousel-image {
+                 width: 100%;
+                 height: 87%;
+                 background-image: var(--img-url);
+                 background-size: contain;
+                 background-position: center ;
+                 background-repeat: no-repeat;
+                 border-radius: 10px;
+               }
+           </style>
+
+           <script>
+               // Просто для надёжности — если хочется подгрузить картинку динамически или проверить
+               document.addEventListener("DOMContentLoaded", function () {
+                 const img = document.querySelector(".carousel-image");
+                 const bgImage = img.style.backgroundImage;
+
+                 if (!bgImage || bgImage === 'none') {
+                   console.warn("Изображение не загружено. Проверь путь к файлу.");
+                 }
+               });
+           </script>
 <!--           <style>#rec829366623 .t-slds__bullet_active .t-slds__bullet_body{background-color:#222 !important;}#rec829366623 .t-slds__bullet:hover .t-slds__bullet_body{background-color:#222 !important;}</style>-->
        <!--      БЫло закомменчено-->
    </div>
