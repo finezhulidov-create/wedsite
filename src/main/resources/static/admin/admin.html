@@ -10,32 +10,26 @@
     <div class="container">
         <h1>Админ-панель</h1>
 
-        <section>
-            <h2>Пользователи</h2>
+        <!-- Кнопки переключения -->
+        <div class="buttons">
+            <button id="allUsersBtn" class="active">Все пользователи</button>
+            <button id="guestsBtn">Согласные гости</button>
+        </div>
 
-            <!-- Таблица пользователей -->
-            <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
-                <thead>
+        <!-- Таблица пользователей -->
+        <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+            <thead>
                 <tr style="background-color: #f4f4f4;">
                     <th style="text-align: left; padding: 10px; border-bottom: 2px solid #ddd;">Имя</th>
                     <th style="text-align: left; padding: 10px; border-bottom: 2px solid #ddd;">Ответы</th>
                 </tr>
-                </thead>
-                <tbody id="usersTableBody">
-                <!-- Сюда будут подгружаться данные -->
-                </tbody>
-            </table>
+            </thead>
+            <tbody id="usersTableBody">
+                <!-- Данные будут подгружаться сюда -->
+            </tbody>
+        </table>
 
-            <div id="pagination"></div>
-        </section>
-
-        <section>
-            <h2>Добавить пользователя</h2>
-            <form id="userForm">
-                <input type="text" id="username" placeholder="Имя пользователя" required />
-                <button type="submit">Добавить</button>
-            </form>
-        </section>
+        <div id="pagination"></div>
     </div>
 
     <script src="admin.js"></script>

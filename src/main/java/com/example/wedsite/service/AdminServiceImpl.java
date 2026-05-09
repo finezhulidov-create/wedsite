@@ -11,6 +11,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class AdminServiceImpl implements AdminService{
@@ -18,11 +21,37 @@ public class AdminServiceImpl implements AdminService{
     private final UserRepository userRepository;
     private final Mapper mapper;
 
-
+    private final UserService userService;
 
     @Override
     public Page<UserDto> getAllUsers(Pageable pageable) {
 
         return userRepository.findAll(pageable).map(mapper::toDTO);
+    }
+
+    @Override
+    public void deleteUserById(Long id) {
+
+    }
+
+    public List<UserDto> getAgreesUsers(Pageable pageable){
+        List<UserDto> allUsers = userRepository.findAll(pageable).stream().map(mapper::toDTO).toList();
+        return filterAgreesUsers(allUsers);
+    }
+
+    private List<UserDto> filterAgreesUsers(List<UserDto> allUsers) {
+        String b = allUsers.stream()
+                .map(UserDto::answers)
+                .filter(answ -> answ != null && !answ.isEmpty())
+                .map(answer -> answer.get(0))
+                .findFirst()
+                .orElse(null);
+        List<UserDto> filtered = new ArrayList<>();
+        for (UserDto dtos : allUsers){
+            if (dtos.answers().get(0).equalsIgnoreCase(b)){
+                filtered.add(dtos);
+            }
+        }
+        return filtered;
     }
 }

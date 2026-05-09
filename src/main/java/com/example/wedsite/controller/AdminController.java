@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/admin")
@@ -28,5 +30,10 @@ public class AdminController {
      @GetMapping("/users")
     public Page<UserDto> getAllUsers(@PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable){
          return adminService.getAllUsers(pageable);
+     }
+
+     @GetMapping("/guests")
+    public List<UserDto> getAgreedUsers(@PageableDefault(sort = "id", direction = Sort.Direction.DESC )Pageable pageable){
+         return adminService.getAgreesUsers(pageable);
      }
 }
