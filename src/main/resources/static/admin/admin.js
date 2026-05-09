@@ -26,7 +26,7 @@ function loadUsers(page = 0) {
                 const row = document.createElement('tr');
 
                 const nameCell = document.createElement('td');
-                nameCell.textContent = user.name || 'Без имени';
+                nameCell.textContent = user.username || 'Без имени';
                 nameCell.style.padding = '10px 0';
 
                 const answersCell = document.createElement('td');
