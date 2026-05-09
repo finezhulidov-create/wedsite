@@ -56,6 +56,21 @@ function loadUsers(page = 0) {
         .catch(err => console.error('Ошибка загрузки:', err));
 }
 
+// Загрузка количества согласных гостей
+function loadAgreesCount() {
+    fetch('/api/admin/agres')
+        .then(response => response.json())
+        .then(count => {
+            document.getElementById('agreesCount').textContent = count;
+        })
+        .catch(err => {
+            console.error('Ошибка при загрузке количества:', err);
+            document.getElementById('agreesCount').textContent = 'ошибка';
+        });
+}
+
+// Вызов при загрузке
+document.addEventListener('DOMContentLoaded', loadAgreesCount);
 // Переключение между режимами
 allUsersBtn.addEventListener('click', () => {
     currentEndpoint = '/api/admin/users';

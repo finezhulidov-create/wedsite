@@ -12,4 +12,6 @@ public interface AdminService {
     void deleteUserById(Long id);
     List<UserDto> getAgreesUsers(Pageable pageable);
 
+    int countAgreesUsers(Pageable pageable);
+
 }

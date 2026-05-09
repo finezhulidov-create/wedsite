@@ -13,10 +13,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -35,5 +32,10 @@ public class AdminController {
      @GetMapping("/guests")
     public List<UserDto> getAgreedUsers(@PageableDefault(sort = "id", direction = Sort.Direction.DESC )Pageable pageable){
          return adminService.getAgreesUsers(pageable);
+     }
+
+     @GetMapping("/agres")
+    public int countAgrees(Pageable pageable){
+         return adminService.countAgreesUsers(pageable);
      }
 }

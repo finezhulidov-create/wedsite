@@ -39,6 +39,13 @@ public class AdminServiceImpl implements AdminService{
         return filterAgreesUsers(allUsers);
     }
 
+    @Override
+    public int countAgreesUsers(Pageable pageable) {
+        List<UserDto> allUsers = userRepository.findAll(pageable).stream().map(mapper::toDTO).toList();
+        List<UserDto> agreesUsers = filterAgreesUsers(allUsers);
+        return agreesUsers.size();
+    }
+
     private List<UserDto> filterAgreesUsers(List<UserDto> allUsers) {
         String b = allUsers.stream()
                 .map(UserDto::answers)
@@ -54,4 +61,6 @@ public class AdminServiceImpl implements AdminService{
         }
         return filtered;
     }
+
+
 }
