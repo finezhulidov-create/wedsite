@@ -36,7 +36,7 @@ public class AdminServiceImpl implements AdminService{
     }
 
     public Set<UserDto> getAgreesUsers(Pageable pageable){
-        Set<UserDto> allUsers = userRepository.findAll(pageable).stream().map(mapper::toDTO).toList();
+        Set<UserDto> allUsers = userRepository.findAll(pageable).stream().map(mapper::toDTO).collect(Collectors.toSet());
 
         return filterAgreesUsers(allUsers);
     }
@@ -44,7 +44,7 @@ public class AdminServiceImpl implements AdminService{
     @Override
     public int countAgreesUsers(Pageable pageable) {
         List<UserDto> allUsers = userRepository.findAll(pageable).stream().map(mapper::toDTO).toList();
-        List<UserDto> agreesUsers = filterAgreesUsers(allUsers);
+        Set<UserDto> agreesUsers = filterAgreesUsers(new HashSet<>(allUsers));
         return agreesUsers.size();
     }
 

@@ -39,4 +39,8 @@ public class AdminController {
     public int countAgrees(Pageable pageable){
          return adminService.countAgreesUsers(pageable);
      }
+     @DeleteMapping("/deleteuser")
+    public void deleteUser(Long id){
+          adminService.deleteUserById(id);
+     }
 }
