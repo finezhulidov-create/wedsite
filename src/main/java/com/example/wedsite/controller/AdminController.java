@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,7 +31,7 @@ public class AdminController {
      }
 
      @GetMapping("/guests")
-    public List<UserDto> getAgreedUsers(@PageableDefault(sort = "id", direction = Sort.Direction.DESC )Pageable pageable){
+    public Set<UserDto> getAgreedUsers(@PageableDefault(sort = "id", direction = Sort.Direction.DESC )Pageable pageable){
          return adminService.getAgreesUsers(pageable);
      }
 

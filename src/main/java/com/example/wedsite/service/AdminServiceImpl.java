@@ -11,8 +11,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -31,11 +31,13 @@ public class AdminServiceImpl implements AdminService{
 
     @Override
     public void deleteUserById(Long id) {
-
+        User user = userRepository.findById(id).orElseThrow();
+        userRepository.delete(user);
     }
 
-    public List<UserDto> getAgreesUsers(Pageable pageable){
-        List<UserDto> allUsers = userRepository.findAll(pageable).stream().map(mapper::toDTO).toList();
+    public Set<UserDto> getAgreesUsers(Pageable pageable){
+        Set<UserDto> allUsers = userRepository.findAll(pageable).stream().map(mapper::toDTO).toList();
+
         return filterAgreesUsers(allUsers);
     }
 
@@ -46,14 +48,14 @@ public class AdminServiceImpl implements AdminService{
         return agreesUsers.size();
     }
 
-    private List<UserDto> filterAgreesUsers(List<UserDto> allUsers) {
+    private Set<UserDto> filterAgreesUsers(Set<UserDto> allUsers) {
         String b = allUsers.stream()
                 .map(UserDto::answers)
                 .filter(answ -> answ != null && !answ.isEmpty())
                 .map(answer -> answer.get(0))
                 .findFirst()
                 .orElse(null);
-        List<UserDto> filtered = new ArrayList<>();
+        Set<UserDto> filtered = new HashSet<>();
         for (UserDto dtos : allUsers){
             if (dtos.answers().get(0).equalsIgnoreCase(b)){
                 filtered.add(dtos);
