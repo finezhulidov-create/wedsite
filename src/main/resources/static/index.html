@@ -961,6 +961,29 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
                                     </div>
                                 </div>
                             </div>
+                            <div>
+                                <div class="t-input-group t-input-group_rd" data-input-lid="149485894322789" role="radiogroup" aria-labelledby="field-title_1494858943227" data-field-radcb="rb" data-field-type="rd" data-field-name="Даты" style="display:none;">
+                                    <div class="t-input-title t-descr t-descr_md" id="field-title_149485894322789" style="color:#000000;font-weight:500;font-family:'Open Sans';">Дата(ы) присутствия</div>
+                                    <div class="t-input-block">
+                                    <div class="t-radio__wrapper">
+                                    <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
+                                        <input type="radio" name="Дата" value="7 августа регистрация в ЗАГСе" class="t-radio js-tilda-rule" data-tilda-req="1" aria-required="true">
+                                        <div class="t-radio__indicator" style="border-color:#000000"></div><span>7 Августа регистрация в ЗАГСе</span>
+                                    </label>
+                                    <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
+                                        <input type="radio" name="Дата" value="11 августа торжество" class="t-radio js-tilda-rule" data-tilda-req="1" aria-required="true">
+                                        <div class="t-radio__indicator" style="border-color:#000000"></div><span>11 Августа торжество</span>
+                                    </label>
+                                    <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
+                                        <input type="radio" name="Дата" value="Другое" class="t-radio js-tilda-rule" data-tilda-req="1" aria-required="true">
+                                        <div class="t-radio__indicator" style="border-color:#000000"></div><span>7 и 11 августа</span>
+                                    </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
                             <div class="t-input-group t-input-group_in" data-input-lid="1774000000001" data-field-type="in" data-field-name="Уточнение присутствие" style="display:none;">
                                 <label for="input_presence_comment" class="t-input-title t-descr t-descr_md" style="color:#000000;font-weight:500;font-family:'Open Sans';">Уточните информацию по присутствию</label>
                                 <div class="t-input-block">
@@ -1165,6 +1188,7 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
         const accommodationRadios = document.querySelectorAll('input[name="Размещение"]');
         const otherGroup = document.querySelector('[data-field-name="Уточнение размещения"]');
         const presenceRadios = document.querySelectorAll('input[name="Присутствие"]');
+        const datePresenceRadios = document.querySelectorAll('[data-field-name="Даты"]);
         const presenceGroup = document.querySelector('[data-field-name="Уточнение присутствие"]');
 
         allergyRadios.forEach(radio => radio.addEventListener('change', () => {
@@ -1174,6 +1198,9 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
         accommodationRadios.forEach(radio => radio.addEventListener('change', () => {
             otherGroup.style.display = radio.value === 'Другое' ? 'block' : 'none';
         }));
+
+        presenceRadios.forEach(dateRadio=> dateRadio.addEventListener ('change'),()=>{
+            datePresenceRadios.style.display = dateRadio.Value === 'Я приду / Мы придем' ? block : 'none';
 
         presenceRadios.forEach(radio => radio.addEventListener('change', () => {
             presenceGroup.style.display = radio.value === 'Другое' ? 'block' : 'none';
@@ -1202,6 +1229,9 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
                     answers.push(`Присутствие: ${data['Присутствие']}`);
                     if (data['Уточнение присутствие']) {
                         answers.push(`Уточнение присутствия: ${data['Уточнение присутствие']}`);
+                    }
+                    if (data['Даты']){
+                    answers.push (` Дата: ${data['Дата']} `);
                     }
                 }
 
