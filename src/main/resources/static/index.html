@@ -1251,10 +1251,13 @@ dateRadios.forEach(radio => {
                     if (data['Уточнение присутствие']) {
                         answers.push(`Уточнение присутствия: ${data['Уточнение присутствие']}`);
                     }
-                    if (data['Даты']){
-                    answers.push (` Дата: ${data['Дата']} `);
+                    if (data['Присутствие'] === 'Я приду / Мы придем') {
+                        const selectedDateRadio = document.querySelector('input[name="Дата"]:checked');
+                        if (selectedDateRadio) {
+                             answers.push(`Дата присутствия: ${selectedDateRadio.value}`);
                     }
                 }
+              }
 
                 // Имя Фамилия → username
                 const username = data['Имя Фамилия'] || 'Аноним';
