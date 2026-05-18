@@ -55,12 +55,9 @@ function loadUsers(page = 0) {
                     e.preventDefault();
                     if (!confirm(`Вы уверены, что хотите удалить пользователя ${user.username}?`)) return;
 
-                    fetch('/api/admin/deleteuser', {
+                    fetch('/api/admin/deleteuser?id=${user.id}', {
                         method: 'DELETE',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ id: user.id })
+
                     })
                     .then(response => {
                         if (response.ok) {

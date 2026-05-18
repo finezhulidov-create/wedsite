@@ -5,6 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Админ-панель</title>
     <link rel="stylesheet" href="admin.css" />
+    <style>
+        /* Стили для кнопок переключения */
+        .buttons {
+            margin: 20px 0;
+        }
+
+        .buttons button {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+            background-color: #f0f0f0;
+            color: #333;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 8px;
+        }
+
+        .buttons button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .buttons button.active {
+            background-color: #007bff;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+        }
+
+        .buttons button.active:hover {
+            background-color: #0069d9;
+        }
+
+        /* Стили для кнопки "Удалить" */
+        .action-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+        }
+
+        .action-btn:hover {
+            background-color: #c82333;
+            transform: scale(1.05);
+        }
+
+        /* Общие улучшения таблицы */
+        table {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 14px 12px;
+        }
+
+        tbody tr {
+            transition: background-color 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        /* Стиль для пагинации */
+        #pagination button {
+            padding: 8px 14px;
+            margin: 0 4px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            color: #007bff;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        #pagination button:hover:not(:disabled) {
+            background-color: #007bff;
+            color: white;
+        }
+
+        #pagination button:disabled {
+            background-color: #e9ecef;
+            color: #6c757d;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
