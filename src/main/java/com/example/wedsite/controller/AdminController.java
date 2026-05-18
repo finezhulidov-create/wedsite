@@ -40,7 +40,7 @@ public class AdminController {
          return adminService.countAgreesUsers(pageable);
      }
      @DeleteMapping("/deleteuser")
-    public void deleteUser(Long id){
+    public void deleteUser(@RequestParam Long id){
           adminService.deleteUserById(id);
      }
 }

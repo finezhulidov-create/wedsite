@@ -37,12 +37,53 @@ function loadUsers(page = 0) {
                     answersCell.textContent = 'Нет ответов';
                 }
 
+                // Ячейка с кнопкой "Удалить"
+                const actionsCell = document.createElement('td');
+                actionsCell.style.padding = '10px 0';
+                const deleteBtn = document.createElement('button');
+                deleteBtn.textContent = 'Удалить';
+                deleteBtn.style.backgroundColor = '#dc3545';
+                deleteBtn.style.color = 'white';
+                deleteBtn.style.border = 'none';
+                deleteBtn.style.padding = '5px 10px';
+                deleteBtn.style.cursor = 'pointer';
+                deleteBtn.style.borderRadius = '4px';
+                deleteBtn.style.fontSize = '14px';
+
+                // Обработчик клика по кнопке
+                deleteBtn.onclick = (e) => {
+                    e.preventDefault();
+                    if (!confirm(`Вы уверены, что хотите удалить пользователя ${user.username}?`)) return;
+
+                    fetch('/api/admin/deleteuser', {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ id: user.id })
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            row.remove(); // Удаляем строку из таблицы
+                            loadAgreesCount(); // Обновляем счётчик согласных
+                        } else {
+                            alert('Ошибка при удалении');
+                        }
+                    })
+                    .catch(err => {
+                        console.error('Ошибка:', err);
+                        alert('Произошла ошибка при удалении');
+                    });
+                };
+
+                actionsCell.appendChild(deleteBtn);
                 row.appendChild(nameCell);
                 row.appendChild(answersCell);
+                row.appendChild(actionsCell); // Добавляем колонку действий
                 usersTableBody.appendChild(row);
             });
 
-            // Пагинация (если это Page)
+            // Пагинация
             if (data.totalPages && data.totalPages > 1) {
                 for (let i = 0; i < Math.min(data.totalPages, 5); i++) {
                     const btn = document.createElement('button');
@@ -69,8 +110,6 @@ function loadAgreesCount() {
         });
 }
 
-// Вызов при загрузке
-document.addEventListener('DOMContentLoaded', loadAgreesCount);
 // Переключение между режимами
 allUsersBtn.addEventListener('click', () => {
     currentEndpoint = '/api/admin/users';
@@ -86,24 +125,8 @@ guestsBtn.addEventListener('click', () => {
     loadUsers(0);
 });
 
-// Стили для активной кнопки (можно вынести в CSS)
-const style = document.createElement('style');
-style.textContent = `
-    .buttons button {
-        padding: 10px 20px;
-        margin: 10px 5px;
-        font-size: 16px;
-        cursor: pointer;
-        border: 1px solid #ccc;
-        background: #f9f9f9;
-    }
-    .buttons button.active {
-        background: #007bff;
-        color: white;
-        border-color: #007bff;
-    }
-`;
-document.head.appendChild(style);
-
 // Загрузка при старте
-loadUsers();
+document.addEventListener('DOMContentLoaded', () => {
+    loadUsers(0);
+    loadAgreesCount();
+});

@@ -10,6 +10,7 @@ public class Mapper {
     public  UserDto toDTO(User user) {
         if (user == null) return null;
         return new UserDto(
+                user.getId(),
                 user.getUsername(),
                 user.getAnswers()
         );
