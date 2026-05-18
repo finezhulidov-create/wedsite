@@ -968,11 +968,11 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
                                     <div class="t-radio__wrapper">
                                     <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
                                         <input type="radio" name="Дата" value="7 августа регистрация в ЗАГСе" class="t-radio js-tilda-rule" data-tilda-req="1" aria-required="true">
-                                        <div class="t-radio__indicator" style="border-color:#000000"></div><span>7 Августа регистрация в ЗАГСе</span>
+                                        <div class="t-radio__indicator" style="border-color:#000000"></div><span>7 Августа (регистрация в ЗАГСе)</span>
                                     </label>
                                     <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
                                         <input type="radio" name="Дата" value="11 августа торжество" class="t-radio js-tilda-rule" data-tilda-req="1" aria-required="true">
-                                        <div class="t-radio__indicator" style="border-color:#000000"></div><span>11 Августа торжество</span>
+                                        <div class="t-radio__indicator" style="border-color:#000000"></div><span>11 Августа (торжество)</span>
                                     </label>
                                     <label class="t-radio__item t-radio__control t-text t-text_xs" style="color:#000000">
                                         <input type="radio" name="Дата" value="Другое" class="t-radio js-tilda-rule" data-tilda-req="1" aria-required="true">
@@ -983,7 +983,7 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
                                 </div>
                                 </div>
                                 </div>
-                            </div>
+
                             <div class="t-input-group t-input-group_in" data-input-lid="1774000000001" data-field-type="in" data-field-name="Уточнение присутствие" style="display:none;">
                                 <label for="input_presence_comment" class="t-input-title t-descr t-descr_md" style="color:#000000;font-weight:500;font-family:'Open Sans';">Уточните информацию по присутствию</label>
                                 <div class="t-input-block">
@@ -1148,7 +1148,7 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
                                 <button class="t-submit t-btnflex t-btnflex_type_submit t-btnflex_md" type="submit"><span class="t-btnflex__text">ОТПРАВИТЬ</span></button>
                             </div>
 
-                        </div>
+<!--                        </div>-->
                     </form>
                 </div>
             </div>
@@ -1183,28 +1183,49 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
         });
 
         // Логика показа дополнительных полей
-        const allergyRadios = document.querySelectorAll('input[name="Аллергия"]');
-        const allergyGroup = document.querySelector('[data-field-name="Уточнение аллергии"]');
-        const accommodationRadios = document.querySelectorAll('input[name="Размещение"]');
-        const otherGroup = document.querySelector('[data-field-name="Уточнение размещения"]');
-        const presenceRadios = document.querySelectorAll('input[name="Присутствие"]');
-        const datePresenceRadios = document.querySelectorAll('[data-field-name="Даты"]);
-        const presenceGroup = document.querySelector('[data-field-name="Уточнение присутствие"]');
+const allergyRadios = document.querySelectorAll('input[name="Аллергия"]');
+const allergyGroup = document.querySelector('[data-field-name="Уточнение аллергии"]');
 
-        allergyRadios.forEach(radio => radio.addEventListener('change', () => {
-            allergyGroup.style.display = radio.value === 'Да' ? 'block' : 'none';
-        }));
+const accommodationRadios = document.querySelectorAll('input[name="Размещение"]');
+const accommodationGroup = document.querySelector('[data-field-name="Уточнение размещения"]');
 
-        accommodationRadios.forEach(radio => radio.addEventListener('change', () => {
-            otherGroup.style.display = radio.value === 'Другое' ? 'block' : 'none';
-        }));
+const presenceRadios = document.querySelectorAll('input[name="Присутствие"]');
+const presenceGroup = document.querySelector('[data-field-name="Уточнение присутствие"]');
 
-        presenceRadios.forEach(dateRadio=> dateRadio.addEventListener ('change'),()=>{
-            datePresenceRadios.style.display = dateRadio.Value === 'Я приду / Мы придем' ? block : 'none';
+const dateRadios = document.querySelectorAll('input[name="Присутствие"]');
+const datePresenceBlock = document.querySelector('[data-input-lid="149485894322789"]'); // Обёртка "Дата(ы) присутствия"
 
-        presenceRadios.forEach(radio => radio.addEventListener('change', () => {
-            presenceGroup.style.display = radio.value === 'Другое' ? 'block' : 'none';
-        }));
+// Показать/скрыть поле "Уточнение аллергии"
+allergyRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+        allergyGroup.style.display = radio.value === 'Да' ? 'block' : 'none';
+    });
+});
+
+// Показать/скрыть поле "Уточнение размещения"
+accommodationRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+        accommodationGroup.style.display = radio.value === 'Другое' ? 'block' : 'none';
+    });
+});
+
+// Показать/скрыть поле "Уточнение присутствия"
+presenceRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+        presenceGroup.style.display = radio.value === 'Другое' ? 'block' : 'none';
+    });
+});
+
+// Показать/скрыть блок с датами, если выбрано "Я приду / Мы придем"
+dateRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+        if (radio.value === 'Я приду / Мы придем') {
+            datePresenceBlock.style.display = 'block';
+        } else {
+            datePresenceBlock.style.display = 'none';
+        }
+    });
+});
 
         // ✅ Отправка формы
         const form = document.getElementById('form829366621');
