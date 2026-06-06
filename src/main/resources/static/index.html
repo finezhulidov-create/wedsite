@@ -1242,6 +1242,35 @@ dateRadios.forEach(radio => {
                         data[key] = value.trim();
                     }
                 }
+                // ✅ Отправка формы
+const form = document.getElementById('form829366621');
+if (form) {
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const data = {};
+
+        for (const [key, value] of formData.entries()) {
+            if (value.trim() !== '') {
+                data[key] = value.trim();
+            }
+        }
+
+        // ✅ ПРОВЕРКА: Имя Фамилия обязательно
+        if (!data['Имя Фамилия']) {
+            const input = document.getElementById('input_1493283059688');
+            input.focus();
+            input.style.borderColor = 'red';
+            input.placeholder = 'Это поле обязательно для заполнения';
+            return; // останавливаем отправку
+        }
+
+        // Сбрасываем стиль ошибки, если заполнено
+        const input = document.getElementById('input_1493283059688');
+        input.style.borderColor = '#000000';
+
+        // ... остальной код отправки
 
                 const answers = [];
 
@@ -1334,6 +1363,16 @@ dateRadios.forEach(radio => {
         } else {
             console.error('❌ Форма #form829366621 не найдена');
         }
+
+        const nameInput = document.getElementById('input_1493283059688');
+        if (nameInput) {
+    nameInput.addEventListener('input', function () {
+        if (this.value.trim()) {
+            this.style.borderColor = '#000000';
+            this.placeholder = '';
+        }
+    });
+}
 
         // ✅ Принудительное появление формы — ВНЕ submit!
         const animate = document.querySelector('#rec829366621 .t-animate');
