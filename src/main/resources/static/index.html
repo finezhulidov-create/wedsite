@@ -1156,240 +1156,200 @@ setTimeout(function() {window.location=goTo;},500);}}}});});});</script>
     </div>
 
     <!-- ЕДИНСТВЕННЫЙ БЕЗОПАСНЫЙ СКРИПТ -->
-   <script>
-    t_onReady(function () {
-        if (typeof t_loadJsFile !== 'function') {
-            console.warn('t_loadJsFile недоступна. Перезагрузка...');
-            setTimeout(() => location.reload(), 2000);
-            return;
-        }
+     <script>
+         t_onReady(function () {
+             if (typeof t_loadJsFile !== 'function') {
+                 console.warn('t_loadJsFile недоступна. Перезагрузка...');
+                 setTimeout(() => location.reload(), 2000);
+                 return;
+             }
 
-        // Загружаем Tilda-библиотеку для радиокнопок
-        t_loadJsFile('https://static.tildacdn.com/js/tilda-variant-select-1.0.min.js', function () {
-            try {
-                t_input_radiobuttons_init('829366621', '1494858943227');   // Присутствие
-                t_input_radiobuttons_init('829366621', '1493283059688');  // Имя
-                t_input_radiobuttons_init('829366621', '14948589432278'); // Ребёнок
-                t_input_radiobuttons_init('829366621', '14948589432279'); // Аллергия
-                t_input_radiobuttons_init('829366621', '1774000000004');  // Трансфер
-                t_input_radiobuttons_init('829366621', '1774000000005');  // Размещение
-                t_input_checkboxes_init('829366621', '1673287856994');  // Напитки
-                console.log('Форма инициализирована');
-            } catch (e) {
-                console.error('Ошибка инициализации:', e);
-            }
-        }, function () {
-            console.error('❌ Не удалось загрузить tilda-variant-select-1.0.min.js');
-        });
+             t_loadJsFile('https://static.tildacdn.com/js/tilda-variant-select-1.0.min.js', function () {
+                 try {
+                     t_input_radiobuttons_init('829366621', '1494858943227');
+                     t_input_radiobuttons_init('829366621', '1493283059688');
+                     t_input_radiobuttons_init('829366621', '14948589432278');
+                     t_input_radiobuttons_init('829366621', '14948589432279');
+                     t_input_radiobuttons_init('829366621', '1774000000004');
+                     t_input_radiobuttons_init('829366621', '1774000000005');
+                     t_input_checkboxes_init('829366621', '1673287856994');
+                     console.log('Форма инициализирована');
+                 } catch (e) {
+                     console.error('Ошибка инициализации:', e);
+                 }
+             }, function () {
+                 console.error('❌ Не удалось загрузить tilda-variant-select-1.0.min.js');
+             });
 
-        // Логика показа дополнительных полей
-const allergyRadios = document.querySelectorAll('input[name="Аллергия"]');
-const allergyGroup = document.querySelector('[data-field-name="Уточнение аллергии"]');
+             // Логика показа дополнительных полей
+             const allergyRadios = document.querySelectorAll('input[name="Аллергия"]');
+             const allergyGroup = document.querySelector('[data-field-name="Уточнение аллергии"]');
 
-const accommodationRadios = document.querySelectorAll('input[name="Размещение"]');
-const accommodationGroup = document.querySelector('[data-field-name="Уточнение размещения"]');
+             const accommodationRadios = document.querySelectorAll('input[name="Размещение"]');
+             const accommodationGroup = document.querySelector('[data-field-name="Уточнение размещения"]');
 
-const presenceRadios = document.querySelectorAll('input[name="Присутствие"]');
-const presenceGroup = document.querySelector('[data-field-name="Уточнение присутствие"]');
+             const presenceRadios = document.querySelectorAll('input[name="Присутствие"]');
+             const presenceGroup = document.querySelector('[data-field-name="Уточнение присутствие"]');
 
-const dateRadios = document.querySelectorAll('input[name="Присутствие"]');
-const datePresenceBlock = document.querySelector('[data-input-lid="149485894322789"]'); // Обёртка "Дата(ы) присутствия"
+             const dateRadios = document.querySelectorAll('input[name="Присутствие"]');
+             const datePresenceBlock = document.querySelector('[data-input-lid="149485894322789"]');
 
-// Показать/скрыть поле "Уточнение аллергии"
-allergyRadios.forEach(radio => {
-    radio.addEventListener('change', () => {
-        allergyGroup.style.display = radio.value === 'Да' ? 'block' : 'none';
-    });
-});
+             allergyRadios.forEach(radio => {
+                 radio.addEventListener('change', () => {
+                     allergyGroup.style.display = radio.value === 'Да' ? 'block' : 'none';
+                 });
+             });
 
-// Показать/скрыть поле "Уточнение размещения"
-accommodationRadios.forEach(radio => {
-    radio.addEventListener('change', () => {
-        accommodationGroup.style.display = radio.value === 'Другое' ? 'block' : 'none';
-    });
-});
+             accommodationRadios.forEach(radio => {
+                 radio.addEventListener('change', () => {
+                     accommodationGroup.style.display = radio.value === 'Другое' ? 'block' : 'none';
+                 });
+             });
 
-// Показать/скрыть поле "Уточнение присутствия"
-presenceRadios.forEach(radio => {
-    radio.addEventListener('change', () => {
-        presenceGroup.style.display = radio.value === 'Другое' ? 'block' : 'none';
-    });
-});
+             presenceRadios.forEach(radio => {
+                 radio.addEventListener('change', () => {
+                     presenceGroup.style.display = radio.value === 'Другое' ? 'block' : 'none';
+                 });
+             });
 
-// Показать/скрыть блок с датами, если выбрано "Я приду / Мы придем"
-dateRadios.forEach(radio => {
-    radio.addEventListener('change', () => {
-        if (radio.value === 'Я приду / Мы придем') {
-            datePresenceBlock.style.display = 'block';
-        } else {
-            datePresenceBlock.style.display = 'none';
-        }
-    });
-});
+             dateRadios.forEach(radio => {
+                 radio.addEventListener('change', () => {
+                     datePresenceBlock.style.display = radio.value === 'Я приду / Мы придем' ? 'block' : 'none';
+                 });
+             });
 
-        // ✅ Отправка формы
-        const form = document.getElementById('form829366621');
-        if (form) {
-            form.addEventListener('submit', function (e) {
-                e.preventDefault(); // ✅ Останавливаем стандартную отправку
+             // Отправка формы
+             const form = document.getElementById('form829366621');
+             if (form) {
+                 form.addEventListener('submit', function (e) {
+                     e.preventDefault();
 
-                const formData = new FormData(this);
-                const data = {};
+                     const formData = new FormData(this);
+                     const data = {};
 
-                // Собираем все поля
-                for (const [key, value] of formData.entries()) {
-                    if (value.trim() !== '') {
-                        data[key] = value.trim();
-                    }
-                }
-                // ✅ Отправка формы
-const form = document.getElementById('form829366621');
-if (form) {
-    form.addEventListener('submit', function (e) {
-        e.preventDefault();
+                     for (const [key, value] of formData.entries()) {
+                         if (value.trim() !== '') {
+                             data[key] = value.trim();
+                         }
+                     }
 
-        const formData = new FormData(this);
-        const data = {};
+                     // ✅ Проверка поля Имя Фамилия
+                     const nameInput = document.getElementById('input_1493283059688');
+                     if (!data['Имя Фамилия']) {
+                         nameInput.focus();
+                         nameInput.style.borderColor = 'red';
+                         nameInput.placeholder = 'Это поле обязательно для заполнения';
+                         return;
+                     }
+                     nameInput.style.borderColor = '#000000';
 
-        for (const [key, value] of formData.entries()) {
-            if (value.trim() !== '') {
-                data[key] = value.trim();
-            }
-        }
+                     const answers = [];
 
-        // ✅ ПРОВЕРКА: Имя Фамилия обязательно
-        if (!data['Имя Фамилия']) {
-            const input = document.getElementById('input_1493283059688');
-            input.focus();
-            input.style.borderColor = 'red';
-            input.placeholder = 'Это поле обязательно для заполнения';
-            return; // останавливаем отправку
-        }
+                     if (data['Присутствие']) {
+                         answers.push(`Присутствие: ${data['Присутствие']}`);
+                         if (data['Уточнение присутствие']) {
+                             answers.push(`Уточнение присутствия: ${data['Уточнение присутствие']}`);
+                         }
+                         if (data['Присутствие'] === 'Я приду / Мы придем') {
+                             const selectedDateRadio = document.querySelector('input[name="Дата"]:checked');
+                             if (selectedDateRadio) {
+                                 answers.push(`Дата присутствия: ${selectedDateRadio.value}`);
+                             }
+                         }
+                     }
 
-        // Сбрасываем стиль ошибки, если заполнено
-        const input = document.getElementById('input_1493283059688');
-        input.style.borderColor = '#000000';
+                     const username = data['Имя Фамилия'] || 'Аноним';
 
-        // ... остальной код отправки
+                     if (data['Ребенок']) {
+                         answers.push(`Ребёнок: ${data['Ребенок']}`);
+                     }
 
-                const answers = [];
+                     if (data['Аллергия']) {
+                         answers.push(`Аллергия: ${data['Аллергия']}`);
+                         if (data['Уточнение аллергии']) {
+                             answers.push(`Уточнение аллергии: ${data['Уточнение аллергии']}`);
+                         }
+                     }
 
-                // Присутствие + уточнение
-                if (data['Присутствие']) {
-                    answers.push(`Присутствие: ${data['Присутствие']}`);
-                    if (data['Уточнение присутствие']) {
-                        answers.push(`Уточнение присутствия: ${data['Уточнение присутствие']}`);
-                    }
-                    if (data['Присутствие'] === 'Я приду / Мы придем') {
-                        const selectedDateRadio = document.querySelector('input[name="Дата"]:checked');
-                        if (selectedDateRadio) {
-                             answers.push(`Дата присутствия: ${selectedDateRadio.value}`);
-                    }
-                }
-              }
+                     if (data['Трансфер']) {
+                         answers.push(`Трансфер: ${data['Трансфер']}`);
+                     }
 
-                // Имя Фамилия → username
-                const username = data['Имя Фамилия'] || 'Аноним';
+                     if (data['Размещение']) {
+                         answers.push(`Размещение: ${data['Размещение']}`);
+                         if (data['Уточнение размещения']) {
+                             answers.push(`Уточнение размещения: ${data['Уточнение размещения']}`);
+                         }
+                     }
 
-                // Ребёнок
-                if (data['Ребенок']) {
-                    answers.push(`Ребёнок: ${data['Ребенок']}`);
-                }
+                     const selectedDrinks = [...this.querySelectorAll('input[name="Напиток"][type="checkbox"]:checked')]
+                         .map(cb => cb.value);
+                     selectedDrinks.forEach(drink => answers.push(`Напиток: ${drink}`));
 
-                // Аллергия + уточнение
-                if (data['Аллергия']) {
-                    answers.push(`Аллергия: ${data['Аллергия']}`);
-                    if (data['Уточнение аллергии']) {
-                        answers.push(`Уточнение аллергии: ${data['Уточнение аллергии']}`);
-                    }
-                }
+                     if (data['Прочее']) {
+                         answers.push(`Прочее: ${data['Прочее']}`);
+                     }
 
-                // Трансфер
-                if (data['Трансфер']) {
-                    answers.push(`Трансфер: ${data['Трансфер']}`);
-                }
+                     const payload = {
+                         id: null,
+                         username: username,
+                         answers: answers
+                     };
 
-                // Размещение + уточнение
-                if (data['Размещение']) {
-                    answers.push(`Размещение: ${data['Размещение']}`);
-                    if (data['Уточнение размещения']) {
-                        answers.push(`Уточнение размещения: ${data['Уточнение размещения']}`);
-                    }
-                }
+                     fetch('/api/submit', {
+                         method: 'POST',
+                         headers: { 'Content-Type': 'application/json' },
+                         body: JSON.stringify(payload)
+                     })
+                     .then(response => {
+                         if (!response.ok) throw new Error(`Ошибка сервера: ${response.status}`);
+                         return response.json().catch(() => ({}));
+                     })
+                     .then(() => {
+                         this.reset();
+                         const successBox = this.querySelector('.js-successbox');
+                         if (successBox) {
+                             successBox.style.display = 'block';
+                             setTimeout(() => successBox.style.display = 'none', 5000);
+                         }
+                     })
+                     .catch(err => {
+                         console.error('Ошибка отправки:', err);
+                         alert('Не удалось отправить форму. Проверьте подключение.');
+                     });
+                 });
 
-                // Напитки
-                const selectedDrinks = [...this.querySelectorAll('input[name="Напиток"][type="checkbox"]:checked')]
-                    .map(cb => cb.value);
-                selectedDrinks.forEach(drink => answers.push(`Напиток: ${drink}`));
+                 // Сброс красной рамки при вводе
+                 const nameInput = document.getElementById('input_1493283059688');
+                 if (nameInput) {
+                     nameInput.addEventListener('input', function () {
+                         if (this.value.trim()) {
+                             this.style.borderColor = '#000000';
+                             this.placeholder = '';
+                         }
+                     });
+                 }
 
-                if (data['Прочее']) {
-                    answers.push(`Прочее: ${data['Прочее']}`);
-                }
+             } else {
+                 console.error('❌ Форма #form829366621 не найдена');
+             }
 
-                // Финальный payload
-                const payload = {
-                    id: null,
-                    username: username,
-                    answers: answers
-                };
+             // Принудительное появление формы
+             const animate = document.querySelector('#rec829366621 .t-animate');
+             if (animate) {
+                 animate.style.opacity = '1';
+                 animate.style.visibility = 'visible';
+                 animate.classList.add('t-animate_started');
+             }
 
-                // Отправка
-                fetch('/api/submit', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`Ошибка сервера: ${response.status}`);
-                    }
-                    return response.json().catch(() => ({}));
-                })
-                .then(() => {
-                    this.reset();
-                    const successBox = this.querySelector('.js-successbox');
-                    if (successBox) {
-                        successBox.style.display = 'block';
-                        setTimeout(() => successBox.style.display = 'none', 5000);
-                    }
-                })
-                .catch(err => {
-                    console.error('Ошибка отправки:', err);
-                    alert('Не удалось отправить форму. Проверьте подключение.');
-                });
-            });
-        } else {
-            console.error('❌ Форма #form829366621 не найдена');
-        }
-
-        const nameInput = document.getElementById('input_1493283059688');
-        if (nameInput) {
-    nameInput.addEventListener('input', function () {
-        if (this.value.trim()) {
-            this.style.borderColor = '#000000';
-            this.placeholder = '';
-        }
-    });
-}
-
-        // ✅ Принудительное появление формы — ВНЕ submit!
-        const animate = document.querySelector('#rec829366621 .t-animate');
-        if (animate) {
-            animate.style.opacity = '1';
-            animate.style.visibility = 'visible';
-            animate.classList.add('t-animate_started');
-        }
-
-        const rec = document.getElementById('rec829366621');
-        if (rec) {
-            rec.style.opacity = '1';
-            rec.style.visibility = 'visible';
-        }
-        console.log('Форма принудительно показана');
-    });
-</script>
+             const rec = document.getElementById('rec829366621');
+             if (rec) {
+                 rec.style.opacity = '1';
+                 rec.style.visibility = 'visible';
+             }
+             console.log('Форма принудительно показана');
+         });
+     </script>
     <!-- Стили (уже подключены глобально через Tilda) -->
     <!-- Дополнительные локальные стили можно добавить, если нужно -->
     <style>
